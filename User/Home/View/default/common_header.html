@@ -1,0 +1,153 @@
+<link  rel="stylesheet" href="/bitStyle/css/slider_bar.css" />
+<script>
+  $(function(){
+     $(".sidebar-menu").height($(document).height()+300);
+  })
+</script>
+
+<div class="sidebar-menu">
+		<div class="logo"> <a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> <a href="#"> <span id="logo"></span> 
+			      <!--<img id="logo" src="" alt="Logo"/>--> 
+			  </a> </div>		  
+		    <div class="menu">
+		      <ul id="menu">
+		        <li id="menu-home"><a href="/Home/Index/index"><i class="fa fa-tachometer"></i><span style="position: relative;">首页</span></a></li>
+		        <li><a href="#"><i class="fa fa-user"></i><span style="position: relative;">用户中心</span><span class="fa fa-angle-right" style="float: right; position: relative;"></span></a>
+		           <ul>
+					<li><a href="/Home/Info/index.html"><i></i>个人资料</a></li>
+					<li><a href="/Home/Info/pin.html"><i></i>激活码</a></li>
+				    <li><a href="/Home/Info/pai.html"><i></i>排单币</a></li>					
+					<li><a href="/Home/Myuser/index.html"><i></i>我的团队</a></li>
+				    </ul>
+		        </li>
+		        <li id="menu-comunicacao"><a href="#"><i class="fa fa-book nav_icon"></i><span style="position: relative;">财务中心</span><span class="fa fa-angle-right" style="float: right; position: relative;"></span></a>
+		          <ul id="menu-comunicacao-sub">
+					<li><a href="/Home/Info/rwhistory.html">我的静态钱包</a></li>
+					<li><a href="/Home/Index/pdList.html">提供帮助记录</a></li>
+					<li><a href="/Home/Index/gdList.html">接受帮助记录</a></li>
+					<li><a href="/Home/Info/all_history.html">总账记录</a></li>
+		          </ul>
+		        </li>
+				 <li id="menu-comunicacao"><a href="#"><i class="fa fa-cny nav_icon"></i><span style="position: relative;">我的钱包</span><span class="fa fa-angle-right" style="float: right; position: relative;"></span></a>
+		          <ul id="menu-comunicacao-sub">
+					<li><a href="{:U('Info/nwhistory')}">静态钱包：{$userData.ue_money}RMB</a></li>
+					<li><a href="{:U('Info/all_history')}">动态钱包： {$userData.tj_he}RMB</a></li>
+					<li><a href="{:U('Info/pin')}"> 激活码数量：<if condition="$pin_zs"> {$pin_zs}<else/>0</if></a></li>
+					<if condition="$config.open_pandancode eq '1'">
+					<li><a href="{:U('Info/pai')}"> 排单币数量：<if condition="$paidan_num"> {$paidan_num1}<else/>0</if></a></li>
+					 </if>
+		          </ul>
+		        </li>   
+		        <li id="menu-academico"><a href="/Home/Index/reg.html"><i class="fa fa-user-plus"></i><span style="position: relative;">注册新会员</span></a>
+		        </li>
+		        
+		       <!-- <li><a href="/Home/Myuser/task.html"><i class="fa fa-bitcoin "></i><span style="position: relative;">获得排单币</span></a></li>-->
+		        
+		         <li><a href="/Home/Myuser/lottery.html"><i class="fa fa-empire"></i><span style="position: relative;">我要抽奖</span></a>
+		         </li>
+				 <li><a href="/Home/Index/news.html"><i class="fa fa-newspaper-o"></i><span style="position: relative;">新闻公告</span></a></li>
+				  <li><a href="{:U('Index/hot')}"><i class="fa fa-angellist"></i><span style="position: relative;">抢单大厅</span></a>
+		         </li>
+				 <li><a href="{:U('Myuser/lxwm')}"><i class="fa fa-envelope"></i><span style="position: relative;">在线留言</span> <if condition="$msg_count"><span class="badge">{$msg_count}</span></if></a>
+		         </li>
+		      </ul>
+		    </div>
+	 </div>
+
+
+<header class="navbar navbar-static-top" id="top" role="header" >
+   
+    <div class="container">
+	<div class="row" >
+	    <div class="col-md-2">
+		<div class="navbar-header">
+		  <a href="{:U('Index/index')}" class="navbar-brand">
+		    <img src="{$config.logo}" onerror="/bitStyle/images/logo_white.png" alt="" style="max-height:120px;">
+		  </a>
+		</div>
+	    </div>
+	    <div class="col-md-10">
+		
+		<div class="header-right" style="margin-top: 20px;">
+							<div class="profile_details_left"><!--notifications of menu start -->
+								<ul class="nofitications-dropdown" style="padding-left:10px;">
+									<!--<li class="dropdown head-dpdn">
+										<a href="{:U('Myuser/lxwm')}" class="dropdown-toggle" ><i class="fa fa-envelope"></i><span class="badge blue">3</span></a>
+									</li>-->
+									<li class="dropdown head-dpdn">
+										<a href="/Home/Index/news.html" class="dropdown-toggle" ><i class="fa fa-bell"></i><span class="badge"><if condition="$news_count">{$news_count}</if></span></a>
+									</li>	
+									<li class="dropdown head-dpdn">
+										<a href="/Home/Myuser/lottery.html" class="dropdown-toggle" ><i class="fa fa-tasks"></i><span class="badge blue1">奖</span></a>
+										
+									</li>	
+								</ul>
+								<div class="clearfix"> </div>
+							</div>
+							<!--notification menu end -->
+							<div class="profile_details">		
+								<ul>
+									<li class="dropdown profile_details_drop">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+											<div class="profile_img">	
+												<span class="prfil-img"><img src="/bitStyle/images/p1.jpg" alt="" style="max-width:50px;"> </span> 
+												<div class="user-name">
+													<p>{$userData['ue_theme']}</p>
+													<span style="font-style: normal;">级别-{$userData['levelname']} </span>
+												</div>
+												<i class="fa fa-angle-down lnr"></i>
+												<i class="fa fa-angle-up lnr"></i>
+												<div class="clearfix"></div>	
+											</div>	
+										</a>
+										<ul class="dropdown-menu drp-mnu">
+											<li><a href="#"><i class="fa fa-reorder"></i>编号：{$userData['ue_id']|md5=###|substr=###,0,10}</a> </li>
+											<li><a href="#"><i class="fa fa-user"></i>账号：{$userData['ue_account']}</a> </li> 
+											<li><a href="#"><i class="fa fa-mobile"></i>手机：{$userData['ue_phone']}</a> </li> 
+											<li><a href="{:U('/Home/Login/logout')}"><i class="fa fa-sign-out"></i>退出</a> </li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+							<div class="clearfix"> </div>				
+						</div>
+		
+	    </div>
+	</div>
+      
+	
+
+	<!--<div id="tuiguang-link" style="height: 45px;">
+	  <div class="row">
+	      <div class="col-md-12">
+		  <div class="input-group">
+  <span class="input-group-addon">推广</span>
+  <input type="text" class="form-control" id="copy-num" value="{$tgurl}">
+  <span class="input-group-addon" onclick="jsCopy()">复制</span>
+</div>
+	      </div>
+	  </div>
+      </div>-->      
+    </div>
+  </header>
+  <script>
+	var toggle = true;
+				
+	$(".sidebar-icon").click(function() {                
+	  if (toggle)
+	  {
+		$(".page-container").addClass("sidebar-collapsed").removeClass("sidebar-collapsed-back");
+		$("#menu span").css({"position":"absolute"});
+	  }
+	  else
+	  {
+		$(".page-container").removeClass("sidebar-collapsed").addClass("sidebar-collapsed-back");
+		setTimeout(function() {
+		  $("#menu span").css({"position":"relative"});
+		}, 400);
+	  }               
+					toggle = !toggle;
+				});
+</script>
+  
+  <script src="/cssmmm/jquery.countdown.js"></script>

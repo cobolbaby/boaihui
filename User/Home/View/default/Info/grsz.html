@@ -1,0 +1,600 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="ie lt-ie9 lt-ie8 lt-ie7 fluid top-full sidebar sidebar-full sticky-sidebar"> <![endif]-->
+<!--[if IE 7]>    <html class="ie lt-ie9 lt-ie8 fluid top-full sticky-top sidebar sidebar-full sticky-sidebar"> <![endif]-->
+<!--[if IE 8]>    <html class="ie lt-ie9 fluid top-full sticky-top sidebar sidebar-full sticky-sidebar"> <![endif]-->
+<!--[if gt IE 8]> <html class="ie gt-ie8 fluid top-full sticky-top sidebar sidebar-full sticky-sidebar"> <![endif]-->
+<!--[if !IE]><!--><html><!-- <![endif]-->
+<head>
+
+
+<script type="text/javascript" src="/bitStyle/js/jquery.js"></script>
+<script type="text/javascript" src="/bitStyle/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/bitStyle/js/modernizr.js"></script>
+<script type="text/javascript" src="/bitStyle/js/selectivizr.js"></script>
+<script type="text/javascript" src="/bitStyle/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="/bitStyle/js/scripts.js"></script>
+<script type="text/javascript" src="/bitStyle/js/remaining.js"></script>
+<script type="text/javascript" src="/bitStyle/js/fn_number_format.js"></script>
+<script type="text/javascript" src="/bitStyle/js/9acba5c0d35076a1ccd574dfc21b8b2b.js"></script>
+        <script type="text/javascript">
+            var _gNow = new Date();
+        </script>
+        
+<script type="text/javascript">
+$(document).ready(function() {
+        
+    $('#terminate-account').click(function(e){
+        e.preventDefault();
+        $('#dialog-terminate-account').modal('show');
+    });
+});
+</script>
+
+<script type="text/javascript">
+jQuery(document).ready(function($){
+    var gdBtn = $('#gdBtn');
+    var pdBtn = $('#pdBtn');
+    
+    pdBtn.click(function(){
+        $(this).toggleClass('active');
+        gdBtn.removeClass('active');
+        $('#pdWrap').stop(true, false).slideToggle('fast');
+        $('#gdWrap').stop(true, false).slideUp('fast').removeClass('open');
+        return false;
+    });
+    // if user status is freeze or just unblock and not yet do the maintain
+    gdBtn.click(function(){
+        $(this).toggleClass('active');
+        pdBtn.removeClass('active');
+        $('#gdWrap').stop(true, false).slideToggle('fast');
+        $('#pdWrap').stop(true, false).slideUp('fast').removeClass('open');
+        return false;
+    });
+        
+    // Tooltips
+    $('.tip').tooltip({placement: 'top'});
+    $('.tipr').tooltip({placement: 'right'});
+    $('.tipb').tooltip({placement: 'bottom'});
+    $('.tipl').tooltip({placement: 'left'});
+    
+    $("a[href='#top']").click(function() {
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+        return false;
+    });
+    
+    var _server_time = new Date(),
+        _server_time2 = new Date(),
+        _local_time = new Date(),
+        _local_time2 = new Date();
+        _server_time2 = new Date(),
+        _local_time = new Date(),
+        _local_time2 = new Date();
+    
+    _timer = setInterval(function(){
+        var now = new Date();
+        true_elapsed = Math.round((now.getTime() - _gNow.getTime()) / 1000);        //synchronize & increment 1 second
+        second = _local_time.getTime() + 1000;
+        elapsed = Math.round((second - _local_time2.getTime()) / 1000);
+        if(elapsed < true_elapsed){
+            diff = true_elapsed - elapsed;
+            second += (diff * 1000);
+        }
+        _local_time.setTime(second);
+        second = _server_time.getTime() + 1000;
+        elapsed = Math.round((second - _server_time2.getTime()) / 1000);
+        if(elapsed < true_elapsed){
+            diff = true_elapsed - elapsed;
+            second += (diff * 1000);
+        }
+        _server_time.setTime(second);
+        
+        //update server time
+        date_text = padNumber(_server_time.getHours())+':'+padNumber(_server_time.getMinutes())+':'+padNumber(_server_time.getSeconds());
+        date_text += ' ' + _server_time.getDate()+'/'+(_server_time.getMonth()+1)+'/'+_server_time.getFullYear();
+        $('#server_time_text').html(date_text);
+        //update local time
+        date_text = padNumber(_local_time.getHours())+':'+padNumber(_local_time.getMinutes())+':'+padNumber(_local_time.getSeconds());
+        date_text += ' ' + _local_time.getDate()+'/'+(_local_time.getMonth()+1)+'/'+_local_time.getFullYear();
+        $('#local_time_text').html(date_text);
+    }, 1000);
+    
+    /**
+    * @param number An integer
+    * @return Integer padded with a 0 if necessary
+    */
+    function padNumber(number) {
+        return (number >= 0 && number < 10) ? '0' + number : number;
+    }
+});
+</script>
+
+<script type="text/javascript">
+jQuery(document).ready(function($){
+    var _allsecs = new Array();
+    var _allsecs2 = new Array();
+    var _i18n = {
+        weeks: ['星期', '星期'],
+        days: ['天', '天'],
+        hours: ['小时', '小时'],
+        minutes: ['分', '分'],
+        seconds: ['秒', '秒']
+    };
+    $('.maintain_remain_time').each(function(){
+        var _rid = $(this).attr('id');
+        var _seconds = parseInt($(this).attr('rel'));
+        if(_seconds > 0){
+            $(this).html(
+                remaining.getString(_seconds, _i18n, false)
+            );
+        }
+        else{
+            $(this).html('剩余0天');
+        }
+        _allsecs[_rid] = _seconds;
+        _allsecs2[_rid] = _seconds;
+    });
+    timer = setInterval(function(){
+        var now = new Date();
+        true_elapsed = Math.round((now.getTime() - _gNow.getTime()) / 1000);        $('.maintain_remain_time').each(function(){
+            var _rid = $(this).attr('id');
+            if(typeof _allsecs[_rid] == 'undefined'){
+                _allsecs[_rid] = parseInt($(this).attr('rel'));
+            }
+            _seconds = _allsecs[_rid];
+            if(typeof _allsecs2[_rid] == 'undefined'){
+                _allsecs2[_rid] = parseInt($(this).attr('rel'));
+            }
+            //synchronize
+            _diff_sec = _allsecs2[_rid] - _seconds;
+            if(_diff_sec < true_elapsed){
+                _seconds = _allsecs2[_rid] - true_elapsed;
+            }
+            if(_seconds > 0){
+                $(this).html(
+                    remaining.getString(_seconds, _i18n, false)
+                );
+                _allsecs[_rid] = --_seconds;
+            }
+            else{
+                $("#too_many_user").hide();
+                $("#login_btn").removeAttr("disabled");
+                $(this).html('剩余0天');
+            }
+        });
+    }, 1000);
+});
+</script>
+
+<script type="text/javascript">
+
+</script>
+
+<script type="text/javascript">
+jQuery(document).ready(function($){
+    var pin_message = "此次执行需要{quantity}PIN。";
+        $('#maintain_back_btn, #pd_back_btn, #gd_back_btn').click(function(){
+        $('input[name=__req]').val('start'); //back to starting step
+    });
+    
+    if("0"){
+        $("#pd_pin").text(pin_message.replace("{quantity}", parseInt(0 / 0.5)));
+    }else{
+        $("#pd_pin").text(pin_message.replace("{quantity}", 1));
+    }
+    
+    $("input[name=from_wallet]").change(function(){
+        if($(this).val() == 'cwallet'){
+            $("#minimum_amount").text("BTC0.50000000");
+        }else{
+            $("#minimum_amount").text("BTC0.50000000");
+        }
+    });
+    
+    $("#show_pd_amount").html(format_monetary_value(0));
+    $("#show_gd_amount").html(format_monetary_value(0));
+    
+    $("#pd_amount").keyup(function(){
+        $("#show_pd_amount").html(format_monetary_value($(this).val()));
+        if($(this).val() > 0.5 && $(this).val() % 0.5 == 0){
+            $("#pd_pin").text(pin_message.replace("{quantity}", $(this).val() / 0.5));
+        }else{
+            $("#pd_pin").text(pin_message.replace("{quantity}", 1));
+        }
+    });
+    $("#gd_amount").keyup(function(){
+        $("#show_gd_amount").html(format_monetary_value($(this).val()));
+    });
+    
+    if(false){
+        $("#recalc-ep-message").text("您的额外回酬已计算。请稍候片刻再尝试。");
+        $("#recalc-ep-button").attr("disabled", "disabled");
+        setTimeout(function(){
+            $("#recalc-ep-button").removeAttr("disabled");
+            $("#recalc-ep-message").text("");
+        }, 0);
+    }
+    
+    $("#recalc-ep-button").on("click", function(e){
+        e.preventDefault();
+        $("#recalc-ep-message").text("您的额外回酬已计算成功。如果想再计算，请稍候片刻再尝试。");
+        $(this).attr("disabled", "disabled");
+        $.ajax({
+            url: '?aj=1&type=recalc_user_ep',
+            data: {'uid': 82662186},
+            type: 'post',
+            dataType: 'json',
+            error:function(data){
+                console.log(data);
+            },
+            success: function(data){
+                if(data.percent > 0){
+                    $("#current_ep").html(data.percent);
+                }
+            }
+        });
+        setTimeout(function(){
+            $("#recalc-ep-button").removeAttr("disabled");
+            $("#recalc-ep-message").text("");
+        }, 1800000);
+    });
+});
+</script>
+<link rel="stylesheet" href="/bitStyle/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="/bitStyle/css/font-awesome.min.css" type="text/css" />
+<link rel="stylesheet" href="/bitStyle/css/main.v001.css" type="text/css" />
+
+
+<title>{$config.title}-我的档案 </title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
+
+
+<!-- Favicons -->
+<link rel="shortcut icon" href="/bitStyle/favicon.ico" type="image/x-icon">
+
+</head>
+<body class="zh-CN " id="">
+
+<include file="User/Home/View/default/common_header.html" />
+
+<!-- Main Wrapper -->
+<div id="wrapper">
+<include file="User/Home/View/default/top2.html" />
+<include file="User/Home/View/default/common_main.html" />
+            <div class="row">
+                <div class="col-md-6 tablet-column-reset">    
+		    
+                    <div class="widget widget-body-white padding-none">
+                        <div class="widget-head">
+                            <h4 class="heading">帐户详情</h4>
+                        </div>
+                        <form class="form-horizontal margin-none" id="loginForm" method="post" action="/Home/Info/xgzlcl.html" onSubmit="return checkform_profile1();">           
+                            <div class="widget-body" style="padding-bottom:43px;">
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">真实姓名</label>
+                                    <div class="col-md-8">
+                                        <input type="text" require value="{$userData.ue_theme}" id="lid" class="form-control" name="lid" required readonly>
+                                    </div>
+                                </div>
+                                                                <div class="form-group">
+                                    <label class="col-md-4 control-label">手机号码</label>
+                                    <div class="col-md-8">
+                                        <input id="phone1" type="text" autocomplete="off" value="{$userData.ue_phone}" id="" class="form-control" name="phone" required readonly>
+                                    </div>
+                                </div>
+                                 <div class="form-group">
+                                    <label class="col-md-4 control-label">登录用户名</label>
+                                    <div class="col-md-8">
+                                        <input type="text" autocomplete="off" value="{$userData.ue_account}" id="usernameq" class="form-control" name="" required readonly>
+                                    </div>
+                                </div>
+                <div class="form-group">
+                                    <label class="col-md-4 control-label">我的支付宝(<span style="color:#FF0000">*建议使用</span>)</label>
+                                    <div class="col-md-8">
+                                        <input type="text" autocomplete="off" value="{$userData.zfb}" id="zfb" class="form-control" name="zfb">
+                                    </div>
+                                </div>
+								<if condition='C("wxzfpay") eq 1'>
+                                 <div class="form-group">
+                                    <label class="col-md-4 control-label">我的微信号</label>
+                                    <div class="col-md-8">
+                                        <input type="text" autocomplete="off" id="weixin" class="form-control" name="weixin" value="{$userData.weixin}">
+                                    </div>
+                                </div>
+								<else/></if> 
+                                <input type="hidden" id="yhmc" value="{$userData.yhmc}" />
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">银行名称</label>
+                                    <div class="col-md-8">
+                    
+                    <select size="1" id="bank_name" class="form-control" name="yhmc">
+                      <option value="">请选择银行</option>
+                      <option value="中国银行"  >中国银行</option>
+                      <option value="中国工商银行" >中国工商银行</option>
+                      <option value="中国农业银行" >中国农业银行</option>
+                      <option value="中国建设银行" >中国建设银行</option>
+                      <option value="中国光大银行" >中国光大银行</option>
+                      <option value="中国民生银行" >中国民生银行</option>
+                      <option value="中国华夏银行" >中国华夏银行</option>
+                      <option value="中国中信银行" >中国中信银行</option>
+                      <option value="中国交通银行" >中国交通银行</option>
+                      <option value="中国兴业银行" >中国兴业银行</option>
+                      <option value="上海浦东发展银行" >上海浦东发展银行</option>
+                      <option value="中国招商银行" >中国招商银行</option>
+                      <option value="广东发展银行" >广东发展银行</option>
+                      <option value="农村信用社" >农村信用社</option>
+                      <option value="中国邮政储蓄银行" >中国邮政储蓄银行</option>
+                      <option value="其他银行" >其他银行</option>
+                    </select>
+                    
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">银行账户号码</label>
+                                    <div class="col-md-8">
+                                        <input type="text" autocomplete="off" value="{$userData.yhzh}" id="yhzh" class="form-control" name="yhzh">
+                                    </div>
+                                </div>
+                <div class="form-group" style="display:none;">
+                                    <label class="col-md-4 control-label">手机验证码</label>
+                                    <div class="col-md-8">
+                    <div class="input-group">
+                      <input type="text" autocomplete="off" value="" id="phonetex1" class="form-control auto-ajax" name="phonetex1">
+                      <span class="input-group-btn"><input name="sendsmsa"  id="sendsmsa" type="button" class="btn btn-primary btn-sm pemailcheck" value="获取短信验证码"></span>
+                      
+                      </div>
+                  </div>
+                  <div style="clear:both;"></div>
+                  <p style="padding-left:200px; padding-top:10px;">
+                  (如果无法发送，请点<a href="javascript:void(0);" onClick="sendsmspg(1);">语音验证</a>.)
+                  
+                  </p>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">二级密码</label>
+                                    <div class="col-md-8">
+                    <input id="trade_pwd22" type="password" class="form-control" autocomplete="off" name="trade_pwd2" required>
+                  </div>
+                                </div>
+                            </div>
+                            <footer class="data-footer innerAll half text-right clearfix">
+                <font style="color:red;">官方提醒：需要二级密码输入正确才能更改资料!</font>
+                                <button type="submit" class="btn btn-primary btn-sm">更新</button>
+                            </footer>
+                        </form>
+                    </div>                      
+                </div>
+                
+                <div class="col-md-6 tablet-column-reset">
+                    <div class="widget widget-body-white padding-none">
+                        <div class="widget-head">
+                            <h4 class="heading">修改登录密码</h4>
+                        </div>
+                        <form class="form-horizontal margin-none" id="" method="post" action="{:U('Info/xgyjmmcl')}">                         
+                            <div class="widget-body" style="padding-bottom:0px;">
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="firstname">原密码</label>
+                                    <div class="col-md-8">
+                                        <div class="controls">
+                                            <input type="password" class="form-control" name="ymm" value="" required />
+                                                                                    </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="firstname">新密码</label>
+                                    <div class="col-md-8">
+                                        <div class="controls">
+                                            <input type="password" class="form-control" name="xmm" value="" required />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">确认新密码</label>
+                                    <div class="col-md-8"><input class="form-control" id="epassword2" name="xmmqr" value="" type="password" required ></div>
+                                </div>
+                            </div>
+                            <footer class="data-footer innerAll half text-right clearfix">
+                                <button type="submit" class="btn btn-primary btn-sm">更新</button>
+                            </footer>
+                        </form>
+                    </div>
+<div class="widget widget-body-white padding-none">
+                        <div class="widget-head">
+                            <h4 class="heading">修改安全(二级)密码</h4>
+                        </div>
+                        <form class="form-horizontal margin-none" id="" method="post" action="{:U('Info/xgejmmcl')}">
+                            <div class="widget-body" style="padding-bottom:0px;">
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="firstname">原二级密码</label>
+                                    <div class="col-md-8">
+                                        <div class="controls">
+                                            <input type="password" class="form-control" name="yejmm" value="" required />
+                                                                                    </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="firstname">新二级密码</label>
+                                    <div class="col-md-8">
+                                        <div class="controls">
+                                            <input type="password" class="form-control" name="xejmm" value="" required />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">确认新二级密码</label>
+                                    <div class="col-md-8"><input class="form-control" id="epassword2" name="xejmmqr" value="" type="password" required ></div>
+                                </div>
+                            </div>
+                            <footer class="data-footer innerAll half text-right clearfix">
+                                    <button type="submit" class="btn btn-primary btn-sm">更新</button>
+                            </footer>
+                        </form>
+                    </div>                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    function checkform_profile(){
+    return true;
+    }
+  function checkform_profile1(){
+    var alipay = $("#zfb").val();
+    if(/.*[\u4e00-\u9fa5]+.*$/.test(alipay))
+    {
+      alert("支付宝帐号不能含有汉字！");
+      return false;
+    } 
+    
+    var wechat = $("#weixin").val();
+    if(/.*[\u4e00-\u9fa5]+.*$/.test(wechat))
+    {
+      alert("微信号不能含有汉字！");
+      return false;
+    }
+  
+    
+    
+    return true;
+    }
+  function checkform_profile2(){
+    var account = $("#xmm").val();
+    var accountqr = $("#xmmqr").val();
+    var reg = /[a-zA-Z]+(?=[0-9]+)|[0-9]+(?=[a-zA-Z]+)/g; //要求有英文和数字
+    if( account.length<6 ){
+      alert("密码至少要6位！");
+      return false;
+    }
+    if( account!== accountqr )
+    {
+      alert("密码输入不一致！");
+      return false;
+    }
+    if( !reg.test(account) )
+    {
+      alert("密码要求包含字母和数字！");
+      return false;
+    }
+    return true;
+    }
+  function checkform_profile3(){
+    var account = $("#xejmm").val();
+    var accountqr = $("#xejmmqr").val();
+    var reg = /[a-zA-Z]+(?=[0-9]+)|[0-9]+(?=[a-zA-Z]+)/g; //要求有英文和数字
+    if( account.length<6 ){
+      alert("密码至少要6位！");
+      return false;
+    }
+    if( account!== accountqr )
+    {
+      alert("密码输入不一致！");
+      return false;
+    }
+    if( !reg.test(account) )
+    {
+      alert("密码要求包含字母和数字！");
+      return false;
+    }
+    return true;
+    }
+  
+  var intDiff =0;
+  var intDiff1 =0;
+    function sendsmsp(gi){
+    if(intDiff>0){
+      alert('验证短信已发送请稍后再试!');
+      return ;
+    }
+      if(intDiff<=0){
+      var $mobile = $('#phone').val();
+    var $action = '/Home/Myuser/xmb';
+    $.post($action,{dfzh:$mobile,gi:gi},function(data){
+    if(data.sf == 0){
+      alert(data.nr);
+      document.getElementById('alert_phone').innerHTML = data.nr;
+    }else{
+      document.getElementById('alert_phone').innerHTML = data.nr;
+      intDiff = parseInt(60);//倒计时总秒数量
+      $("#sendsms").attr("disabled", true);
+        var timer = window.setInterval(function(){        
+        $("#sendsms").val(''+intDiff+'秒后重新获取');
+        intDiff--;
+        if(intDiff<0){
+          clearInterval(timer);
+          $("#sendsms").removeAttr("disabled");
+          $("#sendsms").val('获取短信验证码');
+        }
+        }, 1000);
+        var $action = '/Home/Info/getacticode';
+      $.post($action,{dfzh:$mobile,gi:gi},function(data){
+        if(data.sf == 0){
+          alert(data.nr);
+        }
+      });
+    }
+    
+    });
+    
+    
+    
+      
+    
+    
+     }
+    }
+  
+  
+  
+  function sendsmspg(gi){
+    if(intDiff1>0){
+      alert('验证短信已发送请稍后再试!');
+      return ;
+    }
+      if(intDiff1<=0){
+      intDiff1 = parseInt(60);//倒计时总秒数量
+      $("#sendsmsa").attr("disabled", true);
+        var timer = window.setInterval(function(){        
+        $("#sendsmsa").val(''+intDiff1+'秒后重新获取');
+        intDiff1--;
+        if(intDiff1<0){
+          clearInterval(timer);
+          $("#sendsmsa").removeAttr("disabled");
+          $("#sendsmsa").val('获取短信验证码');
+        }
+        }, 1000);
+      var $mobile = '';
+        var $action = '/Home/Info/getacticodea';
+      $.post($action,{dfzh:$mobile,gi:gi},function(data){
+        if(data.sf == 0){
+          alert(data.nr);
+        }
+      });
+     }
+     
+  }
+$(function(){
+   
+    $("#bank_name").val($("#yhmc").val());
+   
+
+    $('#sendsms').click(function() {
+    sendsmsp(0);
+    });
+  $('#sendsmsa').click(function() {
+    sendsmspg(0);
+    });
+  
+  
+  
+});
+
+
+</script>
+</body>
+</html>
+

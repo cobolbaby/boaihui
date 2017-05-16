@@ -1,0 +1,293 @@
+@charset "utf-8";
+/* CSS Main */
+
+
+html{height:100%;}
+*{margin:0;padding:0;border:none;list-style:none;}
+body {font:12px/1.5em "microsoft yahei";}
+a {color:#CCCCCC;text-decoration: none;}
+A:hover {  Color:#F00;}
+.a-hide {display: block; height: 100%; text-indent: -999px; overflow: hidden;}
+.tl {text-align: left;}
+.tr {text-align: right;}
+.tc {text-align:center;}
+
+.fn:after{visibility:hidden;display:block;font-size:0;content:"";clear:both;height:0}
+.fn{*zoom:1}
+.l{float:left}
+.r{float:right}
+.cl{clear: both;}
+.rel{ position:relative;}
+.abs{ position:absolute;}
+.oh{overflow:hidden}
+
+.db { display:block;}
+.di { display:inline;}
+.dn { display:none;}
+.dib{display:inline-block;*display:inline;*zoom:1}
+
+body{ height:100%; min-height:100%; width:100%; }
+#wrapper { height:auto; margin:0 auto;min-height:100%; max-width:640px; text-align:center; background:#9C1616; background-size:100% auto; padding-bottom:10px; position:relative; z-index:1;}
+#container {height:auto; min-height:100%; width:100%;margin:0 auto;}
+#header { position:fixed;width:100%; height:40px; overflow:hidden;z-index:101; float:left; left:0; top:0;text-align:center; border-bottom:solid 1px #fff; background: linear-gradient(top, #fff 0, #e9e9e9 100%);background: -moz-linear-gradient(top, #fff 0, #e9e9e9 100%);background: -webkit-linear-gradient(top, #fff 0, #e9e9e9 100%);}
+#main { height:auto; position:relative; padding-top:40px;background-size:100% auto;}
+#footer { padding:5px 0; color:#fff;}
+
+.lotteryTitle { height:50px; line-height:50px; font-size:24px; font-weight:bold; color:#fff4c6;-moz-text-shadow: 0 1px 1px rgba(0,0,0,.7);-ms-text-shadow: 0 1px 1px rgba(0,0,0,.7);-o-text-shadow: 0 1px 1px rgba(0,0,0,.7);-webkit-text-shadow: 0 1px 1px rgba(0,0,0,.7); text-shadow: 0 1px 1px rgba(0,0,0,.7);}
+.lotteryTitle2 { height:34px; line-height:34px; font-size:18px; font-weight:bold; color:#fff4c6;-moz-text-shadow: 0 1px 1px rgba(0,0,0,.7);-ms-text-shadow: 0 1px 1px rgba(0,0,0,.7);-o-text-shadow: 0 1px 1px rgba(0,0,0,.7);-webkit-text-shadow: 0 1px 1px rgba(0,0,0,.7); text-shadow: 0 1px 1px rgba(0,0,0,.7);}
+#lottery { width:280px; height:280px; overflow:hidden; margin:0 auto;-webkit-box-shadow: 0 8px 8px rgba(0,0,0,.3);-moz-box-shadow: 0 8px 8px rgba(0,0,0,.3);box-shadow: 0 8px 8px rgba(0,0,0,.3);}
+#lottery .lotBg { position:relative; width:100%; height:100%;
+	background-color: #860000;
+	-webkit-box-shadow: inset 0 0 13px rgba(198,35,3,1);
+	-moz-box-shadow: inset 0 0 13px rgba(198,35,3,1);
+	box-shadow: inset 0 0 13px rgba(198,35,3,1);
+	border: solid 1px #aa1f01;
+}
+#lottery .lotCon { width:240px; height:240px; overflow:hidden; position:absolute; z-index:2; top:50%; margin-top:-120px; left:50%; margin-left:-120px; background:#333;-webkit-box-shadow: 0 0 5px rgba(0,0,0,.5), inset 0 0 5px rgba(255,78,0,.75);-moz-box-shadow: 0 0 5px rgba(0,0,0,.5), inset 0 0 5px rgba(255,78,0,.75);box-shadow: 0 0 5px rgba(0,0,0,.5), inset 0 0 5px rgba(255,78,0,.75);}
+#lottery .lotCon .prize {width:100%;height:100%;position: absolute;clip: rect(120px,240px,240px,0px);}
+#lottery .lotCon .prizebg {width:100%;height:100%;border-radius: 100px;position: absolute;clip: rect(0px,120px,240px,0px);-o-transform: rotate(30deg);-moz-transform: rotate(30deg);-webkit-transform: rotate(30deg);}
+.prize1 {-o-transform: rotate(120deg);-moz-transform: rotate(120deg);-webkit-transform: rotate(120deg);}
+.prize2 {-o-transform: rotate(180deg);-moz-transform: rotate(180deg);-webkit-transform: rotate(180deg);}
+.prize3 {-o-transform: rotate(240deg);-moz-transform: rotate(240deg);-webkit-transform: rotate(240deg);}
+.prize4 {-o-transform: rotate(300deg);-moz-transform: rotate(300deg);-webkit-transform: rotate(300deg);}
+.prize5 {-o-transform: rotate(360deg);-moz-transform: rotate(360deg);-webkit-transform: rotate(360deg);}
+.prize6 {-o-transform: rotate(420deg);-moz-transform: rotate(420deg);-webkit-transform: rotate(420deg);}
+.prize1 .prizebg { background:#ffc300; z-index:5;-webkit-box-shadow:inset 0 0 10px rgba(255,255,0,.9);-moz-box-shadow:inset 0 0 10px rgba(255,255,0,.9);box-shadow:inset 0 0 10px rgba(255,255,0,.9);}
+.prize2 .prizebg { background:#f17e01;-webkit-box-shadow:inset 0 0 10px rgba(245,165,78,.9);-moz-box-shadow:inset 0 0 10px rgba(245,165,78,.9);box-shadow:inset 0 0 10px rgba(245,165,78,.9);}
+.prize3 .prizebg { background:#ffc300; z-index:5;-webkit-box-shadow:inset 0 0 10px rgba(255,255,0,.9);-moz-box-shadow:inset 0 0 10px rgba(255,255,0,.9);box-shadow:inset 0 0 10px rgba(255,255,0,.9);}
+.prize4 .prizebg { background:#f17e01;-webkit-box-shadow:inset 0 0 10px rgba(245,165,78,.9);-moz-box-shadow:inset 0 0 10px rgba(245,165,78,.9);box-shadow:inset 0 0 10px rgba(245,165,78,.9);}
+.prize5 .prizebg { background:#ffc300; z-index:5;-webkit-box-shadow:inset 0 0 10px rgba(255,255,0,.9);-moz-box-shadow:inset 0 0 10px rgba(255,255,0,.9);box-shadow:inset 0 0 10px rgba(255,255,0,.9);}
+.prize6 .prizebg { background:#f17e01;-webkit-box-shadow:inset 0 0 10px rgba(245,165,78,.9);-moz-box-shadow:inset 0 0 10px rgba(245,165,78,.9);box-shadow:inset 0 0 10px rgba(245,165,78,.9);}
+#lottery .lotTxt { width:100%; height:100%; position:absolute; left:0; top:0;}
+#lottery .lotTxt p {width:100%; height:20px; position:absolute; z-index:3; top:50%; margin-top:-10px; left:0;}
+#lottery .lotTxt p span { width:100%; height:20px; line-height:20px; position:absolute; top:-100px; left:0; font-size:16px; color:#730000;-moz-text-shadow: 0 1px 1px rgba(255,255,255,.7);-ms-text-shadow: 0 1px 1px rgba(255,255,255,.7);-o-text-shadow: 0 1px 1px rgba(255,255,255,.7);-webkit-text-shadow: 0 1px 1px rgba(255,255,255,.7); text-shadow: 0 1px 1px rgba(255,255,255,.7);}
+#lottery .lotTxt .txt1 {-o-transform: rotate(0deg);-moz-transform: rotate(0deg);-webkit-transform: rotate(0deg);transform: rotate(0deg);}
+#lottery .lotTxt .txt2 {-o-transform: rotate(60deg);-moz-transform: rotate(60deg);-webkit-transform: rotate(60deg);transform: rotate(60deg);}
+#lottery .lotTxt .txt3 {-o-transform: rotate(120deg);-moz-transform: rotate(120deg);-webkit-transform: rotate(120deg);transform: rotate(120deg);}
+#lottery .lotTxt .txt4 {-o-transform: rotate(180deg);-moz-transform: rotate(180deg);-webkit-transform: rotate(180deg);transform: rotate(180deg);}
+#lottery .lotTxt .txt5 {-o-transform: rotate(240deg);-moz-transform: rotate(240deg);-webkit-transform: rotate(240deg);transform: rotate(240deg);}
+#lottery .lotTxt .txt6 {-o-transform: rotate(300deg);-moz-transform: rotate(300deg);-webkit-transform: rotate(300deg);transform: rotate(300deg);}
+#lottery .lotImg { width:100%; height:100%; position:absolute; left:0; top:0;}
+#lottery .lotImg p {width:100%; height:20px; position:absolute; z-index:3; top:50%; margin-top:-10px; left:0;}
+#lottery .lotImg p img { width:50px; height:50px; line-height:20px; position:absolute; top:-80px; left:50%; margin-left:-25px; font-size:16px; color:#730000;}
+#lottery .lotImg .img1 {-o-transform: rotate(0deg);-moz-transform: rotate(0deg);-webkit-transform: rotate(0deg);transform: rotate(0deg);}
+#lottery .lotImg .img2 {-o-transform: rotate(60deg);-moz-transform: rotate(60deg);-webkit-transform: rotate(60deg);transform: rotate(60deg);}
+#lottery .lotImg .img3 {-o-transform: rotate(120deg);-moz-transform: rotate(120deg);-webkit-transform: rotate(120deg);transform: rotate(120deg);}
+#lottery .lotImg .img4 {-o-transform: rotate(180deg);-moz-transform: rotate(180deg);-webkit-transform: rotate(180deg);transform: rotate(180deg);}
+#lottery .lotImg .img5 {-o-transform: rotate(240deg);-moz-transform: rotate(240deg);-webkit-transform: rotate(240deg);transform: rotate(240deg);}
+#lottery .lotImg .img6 {-o-transform: rotate(300deg);-moz-transform: rotate(300deg);-webkit-transform: rotate(300deg);transform: rotate(300deg);}
+#lottery .lotCenter { width:50px; height:50px; position:absolute; z-index:5; top:50%; margin-top:-25px; left:50%; margin-left:-25px;}
+#lottery .lotCenter i { display:block;	width:0;height:0;position:absolute; z-index:9;border:10px solid #fff; border-color:transparent transparent #fd250a transparent; position:absolute; left:50%; margin-left:-10px; top:-18px;-o-transform: scaleY(1.5);-moz-transform: scaleY(1.5);-webkit-transform: scaleY(1.5);transform: scaleY(1.5);}
+#lottery .lotCenter a { display:block; position:absolute; z-index:10; width:100%; height:100%;-webkit-border-radius: 23px 22px 22px 23px/23px 23px 22px 22px;-moz-border-radius: 23px 22px 22px 23px/23px 23px 22px 22px;border-radius: 23px 22px 22px 23px/23px 23px 22px 22px;background-color: #da0f00;	-webkit-box-shadow: 0 2px 2px rgba(0,0,0,.4), inset 0 0 9px #ff2a10;-moz-box-shadow: 0 2px 2px rgba(0,0,0,.4), inset 0 0 9px #ff2a10;box-shadow: 0 2px 2px rgba(0,0,0,.4), inset 0 0 9px #ff2a10;background-image: -webkit-linear-gradient(bottom, #b90000, #fc2002);background-image: -moz-linear-gradient(bottom, #b90000, #fc2002);background-image: -o-linear-gradient(bottom, #b90000, #fc2002);background-image: linear-gradient(to top, #b90000, #fc2002); }
+#lottery .lotCenter a span { display:block; padding:11px 0; line-height:16px;color:#fff; text-align:center;-moz-text-shadow: 0 1px 1px #860000;-ms-text-shadow: 0 1px 1px #860000;-o-text-shadow: 0 1px 1px #860000;-webkit-text-shadow: 0 1px 1px #860000; text-shadow: 0 1px 1px #860000;}
+#lottery .lotLight { width:100%; height:16px; position:absolute; top:50%; left:0; margin-top:-8px;}
+#lottery .lotLight li { width:100%; height:100%; position:absolute; top:0; left:0;}
+#lottery .lotLight li i { display:block; width:16px;height:100%; margin-left:2px;}
+.lotLight1 i,.lotLight3 i,.lotLight5 i,.lotLight7 i,.lotLight9 i,.lotLight11 i,.lotLight13 i,.lotLight15 i,.lotLight17 i,.lotLight19 i,.lotLight21 i,.lotLight23 i,.lotLight25 i,.lotLight27 i,.lotLight29 i,.lotLight31 i,.lotLight33 i,.lotLight35 i {background: #a90000;-webkit-box-shadow: 0 0 5px rgba(252,252,252,.75), inset 0 0 5px rgba(255,78,0,.75);-moz-box-shadow: 0 0 5px rgba(252,252,252,.75), inset 0 0 5px rgba(255,78,0,.75);box-shadow: 0 0 5px rgba(252,252,252,.75), inset 0 0 5px rgba(255,78,0,.75);}
+.lotLight2 i,.lotLight4 i,.lotLight6 i,.lotLight8 i,.lotLight10 i,.lotLight12 i,.lotLight14 i,.lotLight16 i,.lotLight18 i,.lotLight20 i,.lotLight22 i,.lotLight24 i,.lotLight26 i,.lotLight28 i,.lotLight30 i,.lotLight32 i,.lotLight34 i,.lotLight36 i { background:#fff9d6;-webkit-box-shadow: 0 0 5px rgba(252,252,252,1), inset 0 0 5px rgba(255,230,0,1);-moz-box-shadow: 0 0 5px rgba(252,252,252,1), inset 0 0 5px rgba(255,230,0,1);box-shadow: 0 0 5px rgba(252,252,252,1), inset 0 0 5px rgba(255,230,0,1);}
+.lotLight1 {-o-transform: rotate(0deg);-moz-transform: rotate(0deg);-webkit-transform: rotate(0deg);transform: rotate(0deg);}
+.lotLight2 {-o-transform: rotate(10deg);-moz-transform: rotate(10deg);-webkit-transform: rotate(10deg);transform: rotate(10deg);}
+.lotLight3 {-o-transform: rotate(20deg);-moz-transform: rotate(20deg);-webkit-transform: rotate(20deg);transform: rotate(20deg);}
+.lotLight4 {-o-transform: rotate(30deg);-moz-transform: rotate(30deg);-webkit-transform: rotate(30deg);transform: rotate(30deg);}
+.lotLight5 {-o-transform: rotate(40deg);-moz-transform: rotate(40deg);-webkit-transform: rotate(40deg);transform: rotate(40deg);}
+.lotLight6 {-o-transform: rotate(55deg);-moz-transform: rotate(50deg);-webkit-transform: rotate(50deg);transform: rotate(50deg);}
+.lotLight7 {-o-transform: rotate(60deg);-moz-transform: rotate(60deg);-webkit-transform: rotate(60deg);transform: rotate(60deg);}
+.lotLight8 {-o-transform: rotate(70deg);-moz-transform: rotate(70deg);-webkit-transform: rotate(70deg);transform: rotate(70deg);}
+.lotLight9 {-o-transform: rotate(80deg);-moz-transform: rotate(80deg);-webkit-transform: rotate(80deg);transform: rotate(80deg);}
+.lotLight10 {-o-transform: rotate(90deg);-moz-transform: rotate(90deg);-webkit-transform: rotate(90deg);transform: rotate(90deg);}
+.lotLight11 {-o-transform: rotate(10deg);-moz-transform: rotate(100deg);-webkit-transform: rotate(100deg);transform: rotate(100deg);}
+.lotLight12 {-o-transform: rotate(110deg);-moz-transform: rotate(110deg);-webkit-transform: rotate(110deg);transform: rotate(110deg);}
+.lotLight13 {-o-transform: rotate(120deg);-moz-transform: rotate(120deg);-webkit-transform: rotate(120deg);transform: rotate(120deg);}
+.lotLight14 {-o-transform: rotate(130deg);-moz-transform: rotate(130deg);-webkit-transform: rotate(130deg);transform: rotate(130deg);}
+.lotLight15 {-o-transform: rotate(140deg);-moz-transform: rotate(140deg);-webkit-transform: rotate(140deg);transform: rotate(140deg);}
+.lotLight16 {-o-transform: rotate(150deg);-moz-transform: rotate(150deg);-webkit-transform: rotate(150deg);transform: rotate(150deg);}
+.lotLight17 {-o-transform: rotate(160deg);-moz-transform: rotate(160deg);-webkit-transform: rotate(160deg);transform: rotate(160deg);}
+.lotLight18 {-o-transform: rotate(170deg);-moz-transform: rotate(170deg);-webkit-transform: rotate(170deg);transform: rotate(170deg);}
+.lotLight19 {-o-transform: rotate(180deg);-moz-transform: rotate(180deg);-webkit-transform: rotate(180deg);transform: rotate(180deg);}
+.lotLight20 {-o-transform: rotate(190deg);-moz-transform: rotate(190deg);-webkit-transform: rotate(190deg);transform: rotate(190deg);}
+.lotLight21 {-o-transform: rotate(200deg);-moz-transform: rotate(200deg);-webkit-transform: rotate(200deg);transform: rotate(200deg);}
+.lotLight22 {-o-transform: rotate(210deg);-moz-transform: rotate(210deg);-webkit-transform: rotate(210deg);transform: rotate(210deg);}
+.lotLight23 {-o-transform: rotate(220deg);-moz-transform: rotate(220deg);-webkit-transform: rotate(220deg);transform: rotate(220deg);}
+.lotLight24 {-o-transform: rotate(230deg);-moz-transform: rotate(230deg);-webkit-transform: rotate(230deg);transform: rotate(230deg);}
+.lotLight25 {-o-transform: rotate(240deg);-moz-transform: rotate(240deg);-webkit-transform: rotate(240deg);transform: rotate(240deg);}
+.lotLight26 {-o-transform: rotate(250deg);-moz-transform: rotate(250deg);-webkit-transform: rotate(250deg);transform: rotate(250deg);}
+.lotLight27 {-o-transform: rotate(260deg);-moz-transform: rotate(260deg);-webkit-transform: rotate(260deg);transform: rotate(260deg);}
+.lotLight28 {-o-transform: rotate(270deg);-moz-transform: rotate(270deg);-webkit-transform: rotate(270deg);transform: rotate(270deg);}
+.lotLight29 {-o-transform: rotate(280deg);-moz-transform: rotate(280deg);-webkit-transform: rotate(280deg);transform: rotate(280deg);}
+.lotLight30 {-o-transform: rotate(290deg);-moz-transform: rotate(290deg);-webkit-transform: rotate(290deg);transform: rotate(290deg);}
+.lotLight31 {-o-transform: rotate(300deg);-moz-transform: rotate(300deg);-webkit-transform: rotate(300deg);transform: rotate(30deg);}
+.lotLight32 {-o-transform: rotate(310deg);-moz-transform: rotate(310deg);-webkit-transform: rotate(310deg);transform: rotate(30deg);}
+.lotLight33 {-o-transform: rotate(320deg);-moz-transform: rotate(320deg);-webkit-transform: rotate(320deg);transform: rotate(30deg);}
+.lotLight34 {-o-transform: rotate(330deg);-moz-transform: rotate(330deg);-webkit-transform: rotate(330deg);transform: rotate(30deg);}
+.lotLight35 {-o-transform: rotate(340deg);-moz-transform: rotate(340deg);-webkit-transform: rotate(340deg);transform: rotate(30deg);}
+.lotLight36 {-o-transform: rotate(350deg);-moz-transform: rotate(350deg);-webkit-transform: rotate(350deg);transform: rotate(30deg);}
+
+.lotterynum { background:#e4bb7d; padding:10px; margin:0 30px; margin-top:20px; font-size:14px; color:#a80809;-webkit-border-radius: 5px;	-moz-border-radius:5px;	border-radius: 5px;	background-color: #e4bb7d;-webkit-box-shadow: inset 1px 1px 2px rgba(0,0,0,.3);-moz-box-shadow: inset 1px 1px 2px rgba(0,0,0,.3);	box-shadow: inset 1px 1px 2px rgba(0,0,0,.3);border: solid 1px #c99a54;-moz-text-shadow: 0 1px 1px rgba(255,255,255,.5);-ms-text-shadow: 0 1px 1px rgba(255,255,255,.5);-o-text-shadow: 0 1px 1px rgba(255,255,255,.5);-webkit-text-shadow: 0 1px 1px rgba(255,255,255,.5); text-shadow: 0 1px 1px rgba(255,255,255,.5); text-align:left;}
+
+
+/*弹窗*/
+.loginForm { width:290px; position:fixed; top:200px; left:50%; margin-left:-145px; z-index:100;}
+.loginForm li { height:auto; overflow:hidden; margin-top:10px; text-align:left;}
+.loginForm li p { height:auto;margin-left:0;float:left; text-align:right; line-height:35px; font-size:14px;}
+.loginForm li span { color:#fff;line-height:20px; font-size:12px; text-align:left;}
+.loginForm li span:before{visibility:hidden;display:block;font-size:0;content:"";clear:both;height:0}
+.loginForm li label { height:35px;margin-left:0;float:left; text-align:right; line-height:35px; font-size:16px;}
+.loginForm li:nth-child(1) { margin-top:0; text-align:center; text-align:left;}
+.loginForm li:nth-child(1) p{ color:#fff; text-align:center; line-height:16px; float:none; margin:0 auto;text-align:left;}
+.sOne-loginForm {margin:0 auto; background:rgba(20,0,0,.8);border-radius:5px;-webkit-border-radius:5px;-moz-border-radius:5px; padding:20px 10px;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;}
+.sOne-loginInput { height:35px;color:#555555; width:99%; font-size:16px; border:solid 1px #d5d4d4; background:#fff;border-radius:5px;-webkit-border-radius:5px;-moz-border-radius:5px;-webkit-appearance:none; text-indent:10px;}
+.sOne-loginInput-half { height:35px;float:left; color:#555555;font-size:16px; width:60%;border:solid 1px #d5d4d4; background:#fff;border-radius:5px;-webkit-border-radius:5px;-moz-border-radius:5px;-webkit-appearance:none;text-indent:10px;}
+.sOne-getpasscode { height:35px;width:35%; color:#909090; float:right; border:solid 1px #d5d4d4; background:#f2f2f2;text-shadow:0px 1px 0px #fff;-webkit-text-shadow:0px 1px 0px #fff;-moz-text-shadow:0px 1px 0px #fff;border-radius:5px;-webkit-border-radius:5px;-moz-border-radius:5px;background: linear-gradient(top, #f5f5f5 0, #e4e4e4 100%);background: -moz-linear-gradient(top, #f5f5f5 0, #e4e4e4 100%);background: -webkit-linear-gradient(top, #f5f5f5 0, #e4e4e4 100%);}
+.sOne-loginInput-btn{ width:100%; height:38px;color:#FFFFFF; font-size:18px; font-weight:bold; font-family:"微软雅黑" cursor:pointer; border-radius:5px;-webkit-border-radius:5px;-moz-border-radius:5px;-webkit-appearance:none; background: linear-gradient(top, #FE1800 0, #E31803 100%);background: -moz-linear-gradient(top, #FE1800 0, #E31803 100%);background: -webkit-linear-gradient(top, #FE1800 0, #E31803 100%);}
+.sOne-loginInput-code {height:37px;width:35%; color:#909090; float:right; background:#fff;border-radius:5px;-webkit-border-radius:5px;-moz-border-radius:5px;}
+.close-loginForm { width:26px; height:26px; display:block; background:#fff; border-radius:15px;-webkit-border-radius:15px;-moz-border-radius:15px; position:absolute; right:-10px; top:-10px; text-align:center; line-height:26px; font-size:28px; font-weight:bold; color:#333;transform:rotate(-45deg);-ms-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-webkit-transform:rotate(-45deg);}
+/*圆角*/
+#lottery,#lottery .lotBg,#lottery .lotCon,#lottery .lotLight li i,#lottery .lotCon .prize,#lottery .lotCon .prizebg,#lottery .lotCenter a {-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;}
+/*插件*/
+.loadingBox{position:fixed;z-index:100;top:50%;left:50%;width:180px;height:100px;margin:-60px auto auto -120px;padding:10px 30px;border: 1px solid #2A2A2A;color:#fff;text-align:center;border-radius:10px;background:rgba(0,0,0,.66);} 
+.loadingBox p{}
+.loadingBox span {font-size:16px;} 
+.loadingBox i{position:absolute;z-index:9;top:60%;left:50%;margin:-16px 0 0 -16px;display:inline-block;width:20px;height:20px;border:4px dotted #000;border-color:rgba(255,255,255,.1) rgba(255,255,255,.2) rgba(255,255,255,.4) rgba(255,255,255,.5);border-radius:300px;-webkit-animation:loadforever 20s infinite linear;} 
+@-webkit-keyframes loadforever{0%{-webkit-transform:rotate(0deg);}100%{-webkit-transform:rotate(5000deg);}}
+/*插件*/
+
+/*旋转*/
+.lotCenter-animation6-1 {-webkit-animation:lotCenter6-1 5s ease 0.2s forwards;}
+@-webkit-keyframes lotCenter6-1
+{
+	0%{-webkit-transform:rotate(0deg);}
+	100%{-webkit-transform:rotate(3600deg);}
+}
+.lotCenter-animation6-2 {-webkit-animation:lotCenter6-2 5s ease 0.2s forwards;}
+@-webkit-keyframes lotCenter6-2
+{
+	0%{-webkit-transform:rotate(0deg);}
+	100%{-webkit-transform:rotate(3660deg);}
+}
+.lotCenter-animation6-3 {-webkit-animation:lotCenter6-3 5s ease 0.2s forwards;}
+@-webkit-keyframes lotCenter6-3
+{
+	0%{-webkit-transform:rotate(0deg);}
+	100%{-webkit-transform:rotate(3720deg);}
+}
+.lotCenter-animation6-4 {-webkit-animation:lotCenter6-4 5s ease 0.2s forwards;}
+@-webkit-keyframes lotCenter6-4
+{
+	0%{-webkit-transform:rotate(0deg);}
+	100%{-webkit-transform:rotate(3780deg);}
+}
+.lotCenter-animation6-5 {-webkit-animation:lotCenter6-5 5s ease 0.2s forwards;}
+@-webkit-keyframes lotCenter6-5
+{
+	0%{-webkit-transform:rotate(0deg);}
+	100%{-webkit-transform:rotate(3840deg);}
+}
+.lotCenter-animation6-6 {-webkit-animation:lotCenter6-6 5s ease 0.2s forwards;}
+@-webkit-keyframes lotCenter6-6
+{
+	0%{-webkit-transform:rotate(0deg);}
+	100%{-webkit-transform:rotate(3900deg);}
+}
+
+
+.lotCenter-animation5-1 {-webkit-animation:lotCenter5-1 5s ease 0.2s forwards;}
+@-webkit-keyframes lotCenter5-1
+{
+	0%{-webkit-transform:rotate(0deg);}
+	100%{-webkit-transform:rotate(3600deg);}
+}
+.lotCenter-animation5-2 {-webkit-animation:lotCenter5-2 5s ease 0.2s forwards;}
+@-webkit-keyframes lotCenter5-2
+{
+	0%{-webkit-transform:rotate(0deg);}
+	100%{-webkit-transform:rotate(3672deg);}
+}
+.lotCenter-animation5-3 {-webkit-animation:lotCenter5-3 5s ease 0.2s forwards;}
+@-webkit-keyframes lotCenter5-3
+{
+	0%{-webkit-transform:rotate(0deg);}
+	100%{-webkit-transform:rotate(3744deg);}
+}
+.lotCenter-animation5-4 {-webkit-animation:lotCenter5-4 5s ease 0.2s forwards;}
+@-webkit-keyframes lotCenter5-4
+{
+	0%{-webkit-transform:rotate(0deg);}
+	100%{-webkit-transform:rotate(3816deg);}
+}
+.lotCenter-animation5-5 {-webkit-animation:lotCenter5-5 5s ease 0.2s forwards;}
+@-webkit-keyframes lotCenter5-5
+{
+	0%{-webkit-transform:rotate(0deg);}
+	100%{-webkit-transform:rotate(3888deg);}
+}
+
+.lotCenter-animation4-1 {-webkit-animation:lotCenter4-1 5s ease 0.2s forwards;}
+@-webkit-keyframes lotCenter4-1
+{
+	0%{-webkit-transform:rotate(0deg);}
+	100%{-webkit-transform:rotate(3600deg);}
+}
+.lotCenter-animation4-2 {-webkit-animation:lotCenter4-2 5s ease 0.2s forwards;}
+@-webkit-keyframes lotCenter4-2
+{
+	0%{-webkit-transform:rotate(0deg);}
+	100%{-webkit-transform:rotate(3690deg);}
+}
+.lotCenter-animation4-3 {-webkit-animation:lotCenter4-3 5s ease 0.2s forwards;}
+@-webkit-keyframes lotCenter4-3
+{
+	0%{-webkit-transform:rotate(0deg);}
+	100%{-webkit-transform:rotate(3780deg);}
+}
+.lotCenter-animation4-4 {-webkit-animation:lotCenter4-4 5s ease 0.2s forwards;}
+@-webkit-keyframes lotCenter4-4
+{
+	0%{-webkit-transform:rotate(0deg);}
+	100%{-webkit-transform:rotate(3870deg);}
+}
+
+
+.lotCenter-animation3-1 {-webkit-animation:lotCenter3-1 5s ease 0.2s forwards;}
+@-webkit-keyframes lotCenter3-1
+{
+	0%{-webkit-transform:rotate(0deg);}
+	100%{-webkit-transform:rotate(3600deg);}
+}
+.lotCenter-animation3-2 {-webkit-animation:lotCenter3-2 5s ease 0.2s forwards;}
+@-webkit-keyframes lotCenter3-2
+{
+	0%{-webkit-transform:rotate(0deg);}
+	100%{-webkit-transform:rotate(3720deg);}
+}
+.lotCenter-animation3-3 {-webkit-animation:lotCenter3-3 5s ease 0.2s forwards;}
+@-webkit-keyframes lotCenter3-3
+{
+	0%{-webkit-transform:rotate(0deg);}
+	100%{-webkit-transform:rotate(3840deg);}
+}
+
+.lotCenter-animation2-1 {-webkit-animation:lotCenter2-1 5s ease 0.2s forwards;}
+@-webkit-keyframes lotCenter2-1
+{
+	0%{-webkit-transform:rotate(0deg);}
+	100%{-webkit-transform:rotate(3600deg);}
+}
+.lotCenter-animation2-2 {-webkit-animation:lotCenter2-2 5s ease 0.2s forwards;}
+@-webkit-keyframes lotCenter2-2
+{
+	0%{-webkit-transform:rotate(0deg);}
+	100%{-webkit-transform:rotate(3780deg);}
+}
+/*灯*/
+.lotLight-animation1 {-webkit-animation:lotLight1 5s ease 0s forwards;}
+@-webkit-keyframes lotLight1
+{
+	0%{-webkit-transform:rotate(0deg);}
+	100%{-webkit-transform:rotate(360deg);}
+}
+.lotLight-animation2 {-webkit-animation:lotLight2 5s linear 0s infinite;}
+@-webkit-keyframes lotLight2
+{
+	0%{-webkit-transform:rotate(0deg);}
+	100%{-webkit-transform:rotate(40deg);}
+}

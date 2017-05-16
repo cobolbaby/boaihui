@@ -1,0 +1,69 @@
+<script data-cfhash='f9e31' type="text/javascript">
+                  function jsCopy(){
+                    var e=document.getElementById("copy-num");//对象是copy-num1
+                    e.select(); //选择对象
+                    document.execCommand("Copy"); //执行浏览器复制命令
+                    alert("复制成功");
+                }
+                  /* <![CDATA[ */
+                  !
+                  function() {
+                    try {
+                      var t = "currentScript" in document ? document.currentScript: function() {
+                        for (var t = document.getElementsByTagName("script"), e = t.length; e--;) if (t[e].getAttribute("data-cfhash")) return t[e]
+                      } ();
+                      if (t && t.previousSibling) {
+                        var e, r, n, i, c = t.previousSibling,
+                        a = c.getAttribute("data-cfemail");
+                        if (a) {    
+                          for (e = "", r = parseInt(a.substr(0, 2), 16), n = 2; a.length - n; n += 2) i = parseInt(a.substr(n, 2), 16) ^ r,
+                          e += String.fromCharCode(i);
+                          e = document.createTextNode(e),
+                          c.parentNode.replaceChild(e, c)
+                        }
+                        t.parentNode.removeChild(t);
+                      }
+                    } catch(u) {}
+                  } ()
+                  /* ]]> */
+                  
+                </script>
+
+<div style="/*background-color: #003d74;border-bottom: 1px solid #dedede;margin-bottom: 20px;*/">
+  <div class="container" style="padding: 10px 5px;">
+    <div id="userRank" class="pull-left" style="padding:4px 25px;">
+      <div style="position: relative;"> <font style="font-size:16px; font-weight:bold; color:#003d74;">{$userData['ue_theme']}</font>,
+        <if condition='C("jjaccountflag") eq 1'>级别-<font style="color:#FF0000">{$userData['levelname']}</font>
+          <else/>
+        </if>
+        <if condition="$ucheck eq '0'"><a href="javascript:if(confirm('您确定激活帐户吗?'))location='/Home/Index/active_mem/id/{$userData['ue_account']}'" >(未激活）</a>
+          <else/>
+          已激活</if>
+        ! <!--<if condition="$config.open_pandancode eq '1'"> <span style=" font-weight:bold;">当月任务</span>：<font style="color:#FF0000">{$renwu_num}</font>次任务,已参与<font style="color:#FF0000">{$tasked}</font>
+次。 </if> -->
+        <if condition="$is_show_count eq '1'"> <font color=red>提供帮助：</font>{$provider_man_count}人，<font color="red">接受帮助：</font>{$receiver_man_count}人 </if>
+      </div>
+      
+      <div class="copy-f">
+      <span style="color: #000;word-break: break-all;">推广链接：<a href="{$tgurl}">
+      <input type="text" style="display:inline-block;color: #000;" value="{$tgurl}" class="form-control" id="copy-num">
+      </a></span><span class="input-group-addon" onclick="jsCopy()" style="width:60px; float:right;">复制</span><!--<img src="/bitStyle/images/qrcode.png" height="20" onmouseover="$('#output').show();" onmouseout="$('#output').hide();" />-->
+      <div id="output" style="display:none;position: absolute;z-index: 2;margin-left: 450px;border: 10px solid green;"></div>
+      </div>
+      <!--<input id="copy-num" style="width:350px;display:inline-block;color: #333;" type="text" value="{$tgurl}" class="form-control">--> 
+    </div>
+    <div class="pull-right mt5 text-right" style="font-size: 11px;">
+      <div style="font-size: 12px;"> 激活码数量：<span style="color:#F00; font-size:14px; font-weight:bold;">{$pin_zs}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        <if condition="$config.open_pandancode eq '1'"> 排单币数量：<span style="color:#F00; font-size:14px; font-weight:bold;">{$paidan_num1} </span>&nbsp;&nbsp;&nbsp;&nbsp; </if>
+      </div>
+      <div> <strong class="mr5"> SERVER </strong> <span id="server_time_text">
+        <php>echo date('Y-m-d H:i:s');</php>
+        </span> &nbsp;&nbsp;&nbsp;&nbsp;<!-- <strong class="mr5">&nbsp;LOCAL </strong> <span id="local_time_text"></span> --> </div>
+    </div>
+  </div>
+</div>
+<script src="/bitStyle/js/jquery.qrcode.min.js"></script> 
+<script>
+  $('#output').qrcode({width:150,height:150,correctLevel:0,text:'{$tgurl}'});  
+</script>
+<div class="container" style=" padding-bottom:20px;"> <img src="{$config.ad}" width="100%" /> </div>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>
+		<!-- Page title -->
+		<title>{$config.title}</title>
+		<meta name="keywords" content="{$config.keywords}" />
+		<link rel="stylesheet" href="/bitStyle/css/bootstrap.min.css" type="text/css"/>
+		<link rel="stylesheet" href="/assets/styles/style.css">
+		<style>
+			.layui-layer1{
+				height: 600px;
+			}
+		</style>
+	</head>
+	
+	<body>	
+	
+		<div style="padding:10px;">
+		<p><strong style="color:#000; font-size:16px;">订单编号:#<span id="order_id">{$g_user.id}</span></strong></p>
+		<p style="font-size:14px; color:#666;">本条抢单帮助金额为:<font id="amount_order" color="#FF0000" style="font-size:22px; font-weight:bold;">{$g_user.jb}</font>人民币</p>		
+		</div>
+		
+		<div style="border:1px solid #009; padding:10px;">
+		  <p><strong>受益人</strong>银行资料如下：</p>
+		  <p><strong>开户银行：<font id="bank_name">{$g_user.yhmc}</font></strong></p>
+		  <p><strong>开户姓名：<font id="bank_user">{$g_user.ue_truename}</font></strong></p>
+		  <p><strong>账户号码：<font id="bank_number">{$g_user.yhzh}</font></strong></p>
+		  <p><strong>微&nbsp;信&nbsp;&nbsp;号：<font id="wechat">{$g_user.weixin}</font></strong></p>
+		  <p><strong>支&nbsp;付&nbsp;&nbsp;宝：<font id="alipay">{$g_user.zfb}</font></strong>  </p>
+		  <p><font color="#FF0000">注意：</font>转账一定要核准账号信息不要有误。</p>
+		</div>
+		
+		<div style="border:1px solid #009; padding:10px; margin-top:10px;">
+		<p><strong>接收者：<font id="receiver_lid">{$g_user.ue_theme}</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;手机号：<font class="receiver_phone">{$g_user.ue_phone}</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系微信：<font class="receiver_wechat_contact">{$g_user.weixin}</font></strong></p>
+		<p style=" border:dotted 1px #999; background:#ffe975;"><strong>接收者经理：<font id="receiver_manager_lid">{$g_up_user.ue_theme}</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接收者经理手机号：<font id="receiver_manager_phone">{$g_up_user.ue_phone}</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系微信：<font class="receiver_manager_wechat_contact">{$g_up_user.weixin}</font></strong></p>
+		</div>
+		<br>
+		<p>说明:抢单成功后。已有利息。而且以后利息更大</p>
+		<form method="post" action="/home/Index/hotcl" name="confirm_rob" id="confirm_rob">
+	           <input type="hidden" name="id" value="{$g_user.id}">
+	           <input type="submit" value="抢抢抢" style="margin-left: 40%;" class="btn btn-info btn-large">		       
+		</form>
+			
+	</body>
+</html>

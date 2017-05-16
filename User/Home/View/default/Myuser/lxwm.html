@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="ie lt-ie9 lt-ie8 lt-ie7 fluid top-full sidebar sidebar-full sticky-sidebar">
+<![endif]-->
+<!--[if IE 7]>
+<html class="ie lt-ie9 lt-ie8 fluid top-full sticky-top sidebar sidebar-full sticky-sidebar">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie lt-ie9 fluid top-full sticky-top sidebar sidebar-full sticky-sidebar">
+<![endif]-->
+<!--[if gt IE 8]>
+<html class="ie gt-ie8 fluid top-full sticky-top sidebar sidebar-full sticky-sidebar">
+<![endif]-->
+<!--[if!IE]><!-->
+<html>
+<!--<![endif]-->
+
+<head>
+<script type="text/javascript" src="/bitStyle/js/jquery.js"></script>
+<script type="text/javascript" src="/bitStyle/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/bitStyle/js/modernizr.js"></script>
+<script type="text/javascript" src="/bitStyle/js/selectivizr.js"></script>
+<script type="text/javascript" src="/bitStyle//js/jquery.cookie.js"></script>
+<script type="text/javascript" src="/bitStyle/js/scripts.js"></script>
+<script type="text/javascript" src="/bitStyle/js/remaining.js"></script>
+<script type="text/javascript" src="/bitStyle/js/fn_number_format.js"></script>
+<script type="text/javascript" src="/bitStyle/js/9acba5c0d35076a1ccd574dfc21b8b2b.js"></script>
+<script type="text/javascript" src="/bitStyle/js/layer.js"></script>
+<script src="/cssmmm/jquery.countdown.js"></script>
+<script type="text/javascript">
+
+  var _gNow = new Date();
+
+  jQuery(document).ready(function($) {
+    var gdBtn = $('#gdBtn');
+    var pdBtn = $('#pdBtn');
+    pdBtn.click(function() {
+      $(this).toggleClass('active');
+      gdBtn.removeClass('active');
+      $('#pdWrap').stop(true, false).slideToggle('fast');
+      $('#gdWrap').stop(true, false).slideUp('fast').removeClass('open');
+      return false
+    });
+    gdBtn.click(function() {
+      $(this).toggleClass('active');
+      pdBtn.removeClass('active');
+      $('#gdWrap').stop(true, false).slideToggle('fast');
+      $('#pdWrap').stop(true, false).slideUp('fast').removeClass('open');
+      return false
+    });
+    $('.tip').tooltip({
+      placement: 'top'
+    });
+    $('.tipr').tooltip({
+      placement: 'right'
+    });
+    $('.tipb').tooltip({
+      placement: 'bottom'
+    });
+    $('.tipl').tooltip({
+      placement: 'left'
+    });
+    $("a[href='#top']").click(function() {
+      $("html, body").animate({
+        scrollTop: 0
+      },
+      "slow");
+      return false
+    });
+    var _server_time = new Date(),
+        _server_time2 = new Date(),
+        _local_time = new Date(),
+        _local_time2 = new Date();
+        _server_time2 = new Date(),
+        _local_time = new Date(),
+        _local_time2 = new Date();
+    _timer = setInterval(function() {
+      var now = new Date();
+      true_elapsed = Math.round((now.getTime() - _gNow.getTime()) / 1000);
+      second = _local_time.getTime() + 1000;
+      elapsed = Math.round((second - _local_time2.getTime()) / 1000);
+      if (elapsed < true_elapsed) {
+        diff = true_elapsed - elapsed;
+        second += (diff * 1000)
+      }
+      _local_time.setTime(second);
+      second = _server_time.getTime() + 1000;
+      elapsed = Math.round((second - _server_time2.getTime()) / 1000);
+      if (elapsed < true_elapsed) {
+        diff = true_elapsed - elapsed;
+        second += (diff * 1000)
+      }
+      _server_time.setTime(second);
+      date_text = padNumber(_server_time.getHours()) + ':' + padNumber(_server_time.getMinutes()) + ':' + padNumber(_server_time.getSeconds());
+      date_text += ' ' + _server_time.getDate() + '/' + (_server_time.getMonth() + 1) + '/' + _server_time.getFullYear();
+      $('#server_time_text').html(date_text);
+      date_text = padNumber(_local_time.getHours()) + ':' + padNumber(_local_time.getMinutes()) + ':' + padNumber(_local_time.getSeconds());
+      date_text += ' ' + _local_time.getDate() + '/' + (_local_time.getMonth() + 1) + '/' + _local_time.getFullYear();
+      $('#local_time_text').html(date_text)
+    },
+    1000);
+    function padNumber(number) {
+      return (number >= 0 && number < 10) ? '0' + number: number
+    }
+  });
+</script>
+<link rel="stylesheet" href="/bitStyle/css/bootstrap.min.css" type="text/css"/>
+<link rel="stylesheet" href="/bitStyle/css/font-awesome.min.css" type="text/css"/>
+<link rel="stylesheet" href="/bitStyle/css/main.v001.css" type="text/css"/>
+<link rel="stylesheet" href="/bitStyle/css/fileupload.css" type="text/css"/>
+<title>{$config.title}
+</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE"/>
+<!--Favicons-->
+<link rel="shortcut icon" href="/bitStyle/favicon.ico" type="image/x-icon">
+</head>
+<body class="zh-CN ">
+<include file="User/Home/View/default/common_header.html" />
+<include file="User/Home/View/default/top2.html" />
+<!-- Main Wrapper -->
+<div id="wrapper">
+<include file="User/Home/View/default/common_main.html" />
+
+<div class="row">
+    <div class="col-md-12">
+	<div style=" background-color:#0f8d4d; padding:10px; padding-bottom:20px; margin-bottom:20px; color:#fff;border-radius:5px;">
+	<h4 class="font-light m-b-xs">提交问题</h4>
+	<p>后台问题提交规范：<br>
+	  1、提交问题，请简明扼要的阐述您的问题。<br>
+	  2、请将你的问题，严格按照问题分类提交，切勿不按分类提交问题。<br>
+	  3、提交前，请仔细查看常见问题列表，如已有解答，请勿再次提交。<br>
+	  4、单个会员一次只能提交一个问题，处理之后才可提交第二个问题。</p>
+	</div>
+    </div>
+    
+    <div class="col-md-5 tablet-column-reset">
+  <div class="widget widget-body-white padding-none">
+      <div class="widget-head">
+    <h4 class="heading">提交问题</h4>
+      </div>
+      <form class="form-horizontal margin-none" action="/Home/Myuser/lxwmcl.html" name="xgmm" id="xgmm" method="post">
+    <div class="widget-body">
+        <div class="form-group">
+      <label class="col-sm-3 control-label">问题</label>
+
+      <div class="col-sm-9">
+
+          <select class="form-control m-b" name="otlylx" id="otlylx">
+                  <option value="利息问题">利息问题</option><option value="订单错误">订单错误</option><option value="会员资料修正">会员资料修正</option><option value="封号与解封">封号与解封</option><option value="不诚信玩家举报">不诚信玩家举报</option><!--<option value="创业(公益)众筹">创业(公益)众筹</option>--><option value="平台建议">平台建议</option><!--<option value="发展合作">发展合作</option>--> </select>
+
+      </div>
+        </div>
+
+        <div class="form-group">
+      <label class="col-sm-3 control-label">标题</label>
+
+      <div class="col-sm-9">
+          <input type="text" required="" name="lybt" id="lybt" class="form-control">
+
+      </div>
+        </div>
+
+        <div class="form-group">
+      <label class="col-sm-3 control-label">内容</label>
+      <div class="col-sm-9">
+          <textarea rows="4" required="" name="lynr" id="lynr" class="form-control" style="width: 100%;"></textarea>
+
+      </div>
+        </div>
+        <div class="text-center" style="position: relative;">
+        <ul id="ul_pics" class="ul_pics clearfix"></ul>
+        <a class="btn btn-info btn-sm" id="btn" style="position: relative; z-index: 1;">上传图片</a> <input name="" class="btn btn-primary btn-sm" type="submit" id="btn" value="提交留言">
+        <script type="text/javascript" src="/js/xz/jquery.js"></script>
+        <script type="text/javascript" src="/plupload/plupload.full.min.js"></script>
+        <script type="text/javascript" src="/js/xz/sucaihuo.js"></script>
+        <div id="html5_1ah1tcur0qs51h2p1bo41iea1nnq3_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 10px; left: 141px; width: 70px; height: 30px; overflow: hidden; z-index: 0;"><input id="html5_1ah1tcur0qs51h2p1bo41iea1nnq3" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept="image/jpeg,image/png,image/gif,image/bmp,image/tiff"></div></div>
+    </div>
+      </form>
+  </div>
+    </div>
+    
+    <div class="col-md-7 tablet-column-reset">
+	<div class="widget widget-body-white padding-none">
+	    <div class="widget-head">
+		<h4 class="heading">问题记录</h4>
+	    </div>
+	    <form class="form-horizontal margin-none" id="" method="post" action="{:U('Info/xgejmmcl')}">
+		<div class="widget-body">
+		    <div class="table-responsive">
+			<div id="example_wrapper" class="dataTables_wrapper no-footer">
+			    <table cellpadding="1" id="example" cellspacing="1" class="table table-bordered table-striped cus_datatable dataTable no-footer" role="grid" aria-describedby="example_info">
+				<thead>
+				<tr role="row"><th class="sorting_desc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="descending" aria-label="编号: activate to sort column ascending" style="width: 61px;">留言时间</th>
+				<th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="时间: activate to sort column ascending" style="width: 61px;">留言标题</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="问题类别: activate to sort column ascending" style="width: 104px;">问题类别</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="发件人: activate to sort column ascending" style="width: 83px;">留言内容</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="状态: activate to sort column ascending" style="width: 62px;">回复时间</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="操作: activate to sort column ascending" style="width: 62px;">回复内容</th></tr>
+				</thead>
+				<tbody>
+				    <foreach name='list' item='v'>
+				    <tr role="row" class="odd">
+					<td class="sorting_1">{$v.ma_time}</td>
+					<td>{$v.ma_theme}</td>
+					<td>{$v.ma_otherinfo}</td>
+					<td>{$v.ma_note}</td>
+					<td>{$v.ma_replytime}</td>
+					<td>{$v.ma_reply}</td>
+				    </tr>
+				    </foreach>
+				</tbody>
+                            </table>
+			    <div class="dataTables_paginate paging_simple_numbers" id="example_paginate">{$page}</div>
+                        </div>
+		    </div>
+		</div>
+	    </form>
+	</div>
+    </div>
+</div>
+
+</div>
+
+</body></html>

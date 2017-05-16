@@ -1,0 +1,258 @@
+    <div class="container">
+      <div class="innerContent">
+	<div id="donationWrap">
+	  <div class="row">
+	    <div class="col-sm-6">
+        <if condition="$config.open_tgbz eq '1'">
+            <a class="btn btn-block " id="pdBtn">
+            <span class="p-donation">
+              提供帮助
+            </span>
+              </a>
+        <else/>
+            <a class="btn btn-block" id="pdBtn1" onclick="alert('提供帮助暂时关闭，请开放后操作!'); event.stopPropagation();">
+            <span class="p-donation">
+              提供帮助
+            </span>
+              </a>
+        </if>
+	    </div>
+	    <div class="col-sm-6">
+        <if condition="$config.open_jsbz eq '1'">
+              <a class="btn btn-block " id="gdBtn">
+            <span class="g-donation">
+              接受帮助
+            </span>
+              </a>
+         <else/>
+            <a class="btn btn-block " id="gdBtn1" onclick="alert('接受帮助暂时关闭，请开放后操作!'); event.stopPropagation();">
+            <span class="g-donation">
+              接受帮助
+            </span>
+              </a>
+         
+         </if>
+	    </div>
+	  </div>
+   
+	  <div class="row">
+	    <div class="col-md-12" id="pdWrap" style="">
+	      <div class="widget widget-body-white" style="padding:0px;">
+		<form method="post" action="/Home/Index/tgbzcl" name="buy_share_form" class="form-horizontal margin-none" id="provide_help">
+		  <div class="widget-head widget-head-blue" style="background-color:#0F8D4D; color:white;">
+		    <h4 class="heading"  style=" color:white;">
+		      提供帮助
+		    </h4>
+		  </div>
+		  <div class="widget-body" style="padding-bottom:0px;">
+		    <div class="form-group" style="padding-top:20px;">
+		    <if condition='C("pd_days") eq 1'>
+              <p class="help-block apply_tip">
+			请认真填写愿意几天后接受匹配！
+		      </p>
+              </if>
+		      <label class="col-md-3 control-label">
+			支付方式
+		      </label>
+		      <div class="col-md-9">
+			<label>
+			  <input type="checkbox" value="1" class="ckbox" name="zffs2" checked="">
+			  支付宝支付
+			</label>
+			<if condition='C("wxzfpay") eq 1'>
+			<label>
+			  <input type="checkbox" value="1" class="ckbox" name="zffs3" checked="">
+			  微信支付
+			</label>
+			<else/></if> 
+			<label>
+			  <input type="checkbox" value="1" class="ckbox" name="zffs1" checked="">
+			  银行支付
+			</label>
+		      </div>
+		    </div>
+            
+            <if condition="$config.open_pandancode eq '1'">
+                <div class="form-group">
+                <label class="col-sm-3 control-label">输入排单码</label>
+                  <div class="col-sm-9">
+                 <div>剩余排单数:{$paidan_num1}</div>
+                 
+                  </div>
+                </div>
+            </if>
+		    <div class="form-group">
+		      <label class="col-md-3 control-label">
+			提供帮助金额
+		      </label>
+		      <div class="col-md-9">
+			<input type="text" class="form-control get_amount" placeholder="输入{$jj01s}-{$jj01m}"
+			name="amount" id="amount" autocomplete="off" required>
+            <font color="red">{$pd_amount_s1}-{$pd_amount_e1}需{$pd_coin_count1}排单币,{$pd_amount_s2}-{$pd_amount_e2}需{$pd_coin_count2}排单币,{$pd_amount_s3}-{$pd_amount_e3}需{$pd_coin_count3}排单币</font>
+		      </div>
+		    </div>
+            <if condition='C("pd_days") eq 1'>
+		    <div class="form-group">
+		      <label class="col-sm-3 control-label">我愿意排队的天数</label>
+		      <div class="col-sm-9">
+			  <div class="input-group" style="width: 80px;">
+			    <span class="input-group-btn">
+			      <button class="btn btn-default btn-sm" type="button" id="tsa-sub">-</button>
+			    </span>
+			      <input type="text" class="form-control" readonly name="wait_day" id="tsa" autocomplete="off" required value="0">
+			    <span class="input-group-btn">
+			      <button class="btn btn-default btn-sm" type="button" id="tsa-add">+</button>
+			    </span>
+			  </div>
+			  <p class="help-block">
+			      <input type="checkbox" class="i-checks" name="i-checks" checked="" required style="position: absolute; opacity: 0;">
+     <span style="line-height:25px;">会员自由选择排队天数进行匹配，系统根据平台进行大数据匹配。<!--<br />
+     警告，我已完全了解所有风险,我决定参与平台创业计划,尊重平台创业计划文化与传统。</span>-->
+			  </p>
+		      </div>
+		    </div>
+            </if>
+		  </div>
+		  <footer class="data-footer innerAll half text-right clearfix">
+		    <button type="button" class="btn btn-default" data-dismiss="modal">
+		      取消
+		    </button>
+		    <!-- <button type="button" class="btn_next btn-warning btn-sm" data-dismiss="modal"
+		    data-toggle="modal" data-target="#myModal2">提供帮助</button>-->
+		    <input name="jhwjjc" id="jhwjjc" type="submit" class="btn_next btn-warning btn-sm btn btn-primary "
+		    value="提供帮助">
+		  </footer>
+		</form>
+	      </div>
+	    </div>
+	    <div class="col-md-12" id="gdWrap" style="">
+	      <div class="widget widget-body-white" style="padding:0px;">
+		<form action="/Home/Index/jsbzcl" method="post" name="wallet_transfer_form_head" class="form-horizontal margin-none" id="wallet_transfer_form_head">
+		  <fieldset>
+		    <div class="widget-head widget-head-blue" style="background-color:#D20000;">
+		      <h4 class="heading" style=" color:white;">
+			接受帮助
+		      </h4>
+		    </div>
+		    <div class="widget-body" style="padding-bottom:0px;">
+		      <div class="form-group" style="padding-top:20px;">
+			<label class="col-md-3 control-label">
+			  选择钱包
+			</label>
+			<div class="col-md-9">
+			    <select name="wallet_type" id="wallet_type_head">
+				<option value="1" selected>静态钱包 (余额: {$userData.ue_money} RMB)</option>
+				<option value="3">动态钱包 (余额: {$userData.tj_he} RMB)</option>
+			    </select>←选择钱包
+			</div>
+		      </div>
+		      <div class="form-group">
+			<label class="col-md-3 control-label">
+			  支付方式
+			</label>
+			<div class="col-md-9">
+			  <label>
+			    <input type="checkbox" value="1" class="ckbox2" name="zffs2" checked="">
+			    支付宝支付
+			  </label>
+			  <if condition='C("wxzfpay") eq 1'>
+			  <label>
+			    <input type="checkbox" value="1" class="ckbox2" name="zffs3" checked="">
+			    微信支付
+			  </label>
+			  <else/></if> 
+			  <label>
+			    <input type="checkbox" value="1" class="ckbox2" name="zffs1" checked="">
+			    银行支付
+			  </label>                                        
+			</div>
+		      </div>
+		      <div class="form-group">
+			<label class="col-md-3 control-label">
+			  接受帮助总额:
+			  <span class="ast">
+			    *
+			  </span>
+			</label>
+			<div class="col-md-9">
+			  <input type="text" class="form-control get_amount" placeholder="按说明输入金额" name="get_amount" autocomplete="off" required>
+			  <p class="help-block">
+			    请输入RMB <span id="tx_themin">{$txthemin}</span>起, 至<span id="tx_themax">{$txthemax}</span>, 且为<span id="tx_thebeishu">{$txthebeishu}</span>的倍数
+			  </p>
+			  <!--<p class="help-block">
+			    警告，我已完全了解所有风险。我决定参与平台创业计划,尊重平台创业计划文化与传统。
+			  </p>-->
+			</div>
+		      </div>
+		    </div>
+		    <div class="data-footer innerAll half text-right clearfix">
+			<button value="继续" id="withdraw_btn" type="submit" class="btn btn-primary btn-sm">
+			  接受帮助
+			</button>
+			<script>
+			    $(function () {
+				//选择钱包
+				$("#wallet_type_head").change(function(){
+				    var wallet_type = $("#wallet_type_head").val();
+				    if(wallet_type==2){
+					//经理奖
+					$("#tx_themin").html('{$jl_start}');
+					$("#tx_themax").html('{$jl_e}');
+					$("#tx_thebeishu").html('{$jl_beishu}');
+					document.wallet_transfer_form_head.action = "{:U('/Home/Index/jsbzcl1')}";
+				    }else if(wallet_type==3){
+					//推荐奖
+					$("#tx_themin").html('{$tj_start}');
+					$("#tx_themax").html('{$tj_e}');
+					$("#tx_thebeishu").html('{$tj_beishu}');
+					document.wallet_transfer_form_head.action = "{:U('/Home/Index/jsbzcl2')}";
+				    }else{
+					//互助奖金
+					$("#tx_themin").html('{$txthemin}');
+					$("#tx_themax").html('{$txthemax}');
+					$("#tx_thebeishu").html('{$txthebeishu}');
+					document.wallet_transfer_form_head.action = "{:U('/Home/Index/jsbzcl')}";
+				    }
+				});
+				
+				//排队天数
+				$('#tsa-add').on('click', function() {
+				    var tsa_val = $('#tsa').val();
+				    if(isNaN(tsa_val)){tsa_val = 0;}
+
+				    var mat=Math.floor(parseInt(tsa_val)+1);
+				    if(mat<0){mat=0;}else if(mat>10){mat=10;}
+				    $("#tsa").val(mat);
+			        });
+			        $('#tsa-sub').on('click', function() {
+				    var tsa_val = $('#tsa').val();
+				    if(isNaN(tsa_val)){tsa_val = 0;}
+				    
+				    var mat=Math.floor(parseInt(tsa_val)-1);
+				    if(mat<0){mat=0;}else if(mat>10){mat=10;}
+				    $("#tsa").val(mat);
+			        });
+				$("#tsa").bind("change",function(){
+				    if(isNaN($(this).val())){
+					$(this).val(0);
+				    }
+				    var ths=$(this).val();
+				    var mat=Math.floor(ths);
+				    if(mat<0){
+					    mat=0;
+				    }else if(mat>10){
+					    mat=10;
+				    }
+				    //alert(mat);
+				    $("#tsa").val(mat);
+				});
+			    });
+			</script>
+		    </div>
+		  </fieldset>
+		</form>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+    

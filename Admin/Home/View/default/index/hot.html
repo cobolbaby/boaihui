@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>无标题文档</title>
+    <link href="/sncss/css/style.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="/zTree_v3/css/zTreeStyle/zTreeStyle.css" type="text/css"/>
+    <script type=text/javascript src="/zTree_v3/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/zTree_v3/js/jquery.ztree.core-3.5.js"></script>
+
+  
+
+        
+</head>
+<style>
+    input {
+        border: 1px #cccccc solid;
+        height: 25px;
+        line-height: 25px;
+    }
+</style>
+<body>
+
+<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+        <li><a href="#">首页</a></li>
+        <li><a href="#">匹配系统</a></li>
+        <li><a href="#">利息配置</a></li>
+    </ul>
+</div>
+
+<div class="rightinfo">
+    <div class="tools"></div>
+    <table class="tablelist">
+        <form action="{:U('Home/Index/hot')}" method="post">
+            <thead>
+            <tr>
+                <th width="15%">抢单大厅数据添加方式</th>
+                <th width="85%">
+                    <select name="hot_add_way">
+                        <option <if condition="$hot_add_way eq 1" >selected</if> value="1">自动添加</option>
+                        <option <if condition="$hot_add_way eq 0" >selected</if> value="0">手动添加</option>
+                    </select>(自动:已经匹配的数据到期未打款自动添加到抢单大厅)
+                </th>
+            </tr>
+          <!--   <tr>
+                <th>抢单后利息</th>
+                <th><input name="hot_lixi" value="{$hot_lixi}" type="text"/>%</th>
+            </tr> -->
+        
+            <tr>
+                <th></th>
+                <th><input name="submit" value="提交" type="submit"/></th>
+            </tr>
+            </thead>
+        </form>
+    </table>
+
+</div>
+</body>
+</html>

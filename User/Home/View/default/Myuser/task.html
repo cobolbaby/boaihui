@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="ie lt-ie9 lt-ie8 lt-ie7 fluid top-full sidebar sidebar-full sticky-sidebar">
+<![endif]-->
+<!--[if IE 7]>
+<html class="ie lt-ie9 lt-ie8 fluid top-full sticky-top sidebar sidebar-full sticky-sidebar">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie lt-ie9 fluid top-full sticky-top sidebar sidebar-full sticky-sidebar">
+<![endif]-->
+<!--[if gt IE 8]>
+<html class="ie gt-ie8 fluid top-full sticky-top sidebar sidebar-full sticky-sidebar">
+<![endif]-->
+<!--[if!IE]><!-->
+<html>
+<!--<![endif]-->
+
+<head>
+<script type="text/javascript" src="/bitStyle/js/jquery.js">
+</script>
+<script type="text/javascript" src="/bitStyle/js/bootstrap.min.js">
+</script>
+<script type="text/javascript" src="/bitStyle/js/modernizr.js">
+</script>
+<script type="text/javascript" src="/bitStyle/js/selectivizr.js">
+</script>
+<script type="text/javascript" src="/bitStyle//js/jquery.cookie.js">
+</script>
+<script type="text/javascript" src="/bitStyle/js/scripts.js">
+</script>
+<script type="text/javascript" src="/bitStyle/js/remaining.js">
+</script>
+<script type="text/javascript" src="/bitStyle/js/fn_number_format.js">
+</script>
+<script type="text/javascript" src="/bitStyle/js/9acba5c0d35076a1ccd574dfc21b8b2b.js">
+</script>
+<script type="text/javascript" src="/bitStyle/js/layer.js"></script>
+<script src="/cssmmm/jquery.countdown.js"></script>
+<script type="text/javascript">
+
+  var _gNow = new Date();
+
+  jQuery(document).ready(function($) {
+    var gdBtn = $('#gdBtn');
+    var pdBtn = $('#pdBtn');
+    pdBtn.click(function() {
+      $(this).toggleClass('active');
+      gdBtn.removeClass('active');
+      $('#pdWrap').stop(true, false).slideToggle('fast');
+      $('#gdWrap').stop(true, false).slideUp('fast').removeClass('open');
+      return false
+    });
+    gdBtn.click(function() {
+      $(this).toggleClass('active');
+      pdBtn.removeClass('active');
+      $('#gdWrap').stop(true, false).slideToggle('fast');
+      $('#pdWrap').stop(true, false).slideUp('fast').removeClass('open');
+      return false
+    });
+    $('.tip').tooltip({
+      placement: 'top'
+    });
+    $('.tipr').tooltip({
+      placement: 'right'
+    });
+    $('.tipb').tooltip({
+      placement: 'bottom'
+    });
+    $('.tipl').tooltip({
+      placement: 'left'
+    });
+    $("a[href='#top']").click(function() {
+      $("html, body").animate({
+        scrollTop: 0
+      },
+      "slow");
+      return false
+    });
+    var _server_time = new Date(),
+        _server_time2 = new Date(),
+        _local_time = new Date(),
+        _local_time2 = new Date();
+        _server_time2 = new Date(),
+        _local_time = new Date(),
+        _local_time2 = new Date();
+    _timer = setInterval(function() {
+      var now = new Date();
+      true_elapsed = Math.round((now.getTime() - _gNow.getTime()) / 1000);
+      second = _local_time.getTime() + 1000;
+      elapsed = Math.round((second - _local_time2.getTime()) / 1000);
+      if (elapsed < true_elapsed) {
+        diff = true_elapsed - elapsed;
+        second += (diff * 1000)
+      }
+      _local_time.setTime(second);
+      second = _server_time.getTime() + 1000;
+      elapsed = Math.round((second - _server_time2.getTime()) / 1000);
+      if (elapsed < true_elapsed) {
+        diff = true_elapsed - elapsed;
+        second += (diff * 1000)
+      }
+      _server_time.setTime(second);
+      date_text = padNumber(_server_time.getHours()) + ':' + padNumber(_server_time.getMinutes()) + ':' + padNumber(_server_time.getSeconds());
+      date_text += ' ' + _server_time.getDate() + '/' + (_server_time.getMonth() + 1) + '/' + _server_time.getFullYear();
+      $('#server_time_text').html(date_text);
+      date_text = padNumber(_local_time.getHours()) + ':' + padNumber(_local_time.getMinutes()) + ':' + padNumber(_local_time.getSeconds());
+      date_text += ' ' + _local_time.getDate() + '/' + (_local_time.getMonth() + 1) + '/' + _local_time.getFullYear();
+      $('#local_time_text').html(date_text)
+    },
+    1000);
+    function padNumber(number) {
+      return (number >= 0 && number < 10) ? '0' + number: number
+    }
+  });
+</script>
+<link rel="stylesheet" href="/bitStyle/css/bootstrap.min.css" type="text/css"/>
+<link rel="stylesheet" href="/bitStyle/css/font-awesome.min.css" type="text/css"/>
+<link rel="stylesheet" href="/bitStyle/css/main.v001.css" type="text/css"/>
+<link rel="stylesheet" href="/bitStyle/css/fileupload.css" type="text/css"/>
+<title>{$config.title}
+</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE"/>
+<!--Favicons-->
+<link rel="shortcut icon" href="/bitStyle/favicon.ico" type="image/x-icon">
+</head>
+<body class="zh-CN ">
+<include file="User/Home/View/default/common_header.html" />
+<include file="User/Home/View/default/top2.html" />
+<!-- Main Wrapper -->
+<div id="wrapper">
+<include file="User/Home/View/default/common_main.html" />
+<div class="row">
+    <div class="col-md-12">
+	<div class="panel panel-default">
+	    <div class="panel-body" style="background-color:#0f8d4d; color:#FFFFFF">
+		  {$content}
+	    </div>
+	</div>
+    </div>
+    <div class="col-md-12 mb40">
+	<div class="row">
+	    
+        
+         <foreach name='v_list' item='v'>
+           <if condition='$v.if_type eq "排单币任务"'>
+            <div class="col-md-12">
+            <div class="widget widget-body-white padding-none">
+                <div class="widget-head">
+                <h4 class="heading">{$v.if_theme}</h4>
+                </div>
+                <div class="widget-body">
+                  {$v.if_content}
+                </div>
+            </div>
+            </div>
+           </if>
+        </foreach>
+	    
+	   
+	</div>
+    </div>
+    <div class="col-md-5 tablet-column-reset">
+	<div class="widget widget-body-white padding-none">
+	    <div class="widget-head">
+		<h4 class="heading">完成任务，提交凭证截图</h4>
+	    </div>
+	    <form class="form-horizontal margin-none" action="{:U('Home/Myuser/taskcl')}" name="xgmm" id="xgmm" method="post">
+		<div class="widget-body">
+		    <div class="form-group">
+			<label class="col-sm-3 control-label">选择任务</label>
+
+			<div class="col-sm-9">
+
+			    <select class="form-control m-b" name="otlylx" id="otlylx">
+				<option value="任务1">任务1</option>
+				<option value="任务2">任务2</option>
+				<option value="任务3">任务3</option>
+			    </select>
+
+			</div>
+		    </div>
+
+		    <div class="form-group">
+			<label class="col-sm-3 control-label">执行结果</label>
+
+			<div class="col-sm-9">
+			    <input type="text" required name="lybt" id="lybt" value="我已完成任务" class="form-control">
+
+			</div>
+		    </div>
+
+		    <div class="form-group">
+			<label class="col-sm-3 control-label">详细描述</label>
+			<div class="col-sm-9">
+			    <textarea rows="4" required name="lynr" id="lynr" class="form-control" style="width: 100%;">我已经完成该任务，并承诺任务真实有效，请管理员审核通过并发放排单币！</textarea>
+			</div>
+		    </div>
+		    <div class="text-center">
+		    <ul id="ul_pics" class="ul_pics clearfix"></ul>
+		    <if condition="$allDone">
+			<p class="text-success">当天已经提交过任务，请明天再来！</p>
+		    <else/>
+			<p>必须上传截图凭证，任务才能通过审核！</p>
+			<if condition="$canable_task">
+				<a class="btn btn-info btn-sm" id="btn">上传截图凭证</a> <input name="" class="btn btn-primary btn-sm" type="submit" id="btn" value="提交审核">
+			<else/>
+				<button class="btn btn-info btn-sm" disabled>本月任务数已经完成</button>
+			</if>
+			<script type="text/javascript" src="/js/xz/jquery.js"></script>
+			<script type="text/javascript" src="/plupload/plupload.full.min.js"></script>
+			<script type="text/javascript" src="/js/xz/sucaihuo.js"></script>
+		    </if>
+		    </div>
+		</div>
+	    </form>
+	</div>
+    </div>
+    <div class="col-md-7 tablet-column-reset">
+	<div class="widget widget-body-white padding-none">
+	    <div class="widget-head">
+		<h4 class="heading">排单币任务记录</h4>
+	    </div>
+	    <form class="form-horizontal margin-none" id="" method="post" action="{:U('Info/xgejmmcl')}">
+		<div class="widget-body">
+		    <div class="table-responsive">
+			<div id="example_wrapper" class="dataTables_wrapper no-footer">
+			    <table cellpadding="1" id="example" cellspacing="1" class="table table-bordered table-striped cus_datatable dataTable no-footer" role="grid" aria-describedby="example_info">
+				<thead>
+                                <tr role="row"><th class="sorting_desc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="descending" aria-label="编号: activate to sort column ascending" style="width: 61px;">申请时间</th>
+                                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="时间: activate to sort column ascending" style="width: 61px;">任务结果</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="问题类别: activate to sort column ascending" style="width: 104px;">任务类别</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="发件人: activate to sort column ascending" style="width: 83px;">详细描述</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="状态: activate to sort column ascending" style="width: 62px;">审核时间</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="操作: activate to sort column ascending" style="width: 62px;">审核结果</th></tr>
+                                </thead>
+				<tbody>
+				    <foreach name='list' item='v'>
+				    <tr role="row" class="odd">
+					<td class="sorting_1">{$v.ma_time}</td>
+					<td>{$v.ma_theme}</td>
+					<td>{$v.ma_otherinfo}</td>
+					<td>{$v.ma_note}</td>
+					<td>{$v.ma_replytime}</td>
+					<td>{$v.ma_reply}</td>
+				    </tr>
+				    </foreach>
+				</tbody>
+                            </table>
+			    <div class="dataTables_paginate paging_simple_numbers" id="example_paginate">{$page}</div>
+                        </div>
+		    </div>
+		</div>
+	    </form>
+	</div>
+    </div>
+</div>
+</body></html>

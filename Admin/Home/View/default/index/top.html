@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="/sncss/css/style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript" src="/sncss/js/jquery.js"></script>
+<script type="text/javascript">
+$(function(){	
+	//顶部导航切换
+	$(".nav li a").click(function(){
+		$(".nav li a.selected").removeClass("selected")
+		$(this).addClass("selected");
+	})	
+})	
+</script>
+<style>
+  body{ margin:0; padding:0;}
+</style>
+</head>
+
+<body>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="min-width:800px;">
+      <tr>
+        <td width="200" valign="top">
+          <div class="topleft">
+           <a href="main.html" target="_parent"><img src="/sncss/images/logo.png" title="系统首页" /></a>
+        </div>
+        </td>
+        <td valign="top">
+           <ul class="nav">
+                 <li><a href="/admin.php/Home/Index/df1" target="rightFrame" class="selected"><img src="/sncss/images/nav_icon1_no.png" title="工作台" /><h2>后台首页</h2></a></li>
+                 <if condition="check_premission('会员管理') "> 
+                 <li><a href="/admin.php/Home/Index/userlist" target="rightFrame"><img src="/sncss/images/nav_icon2_no.png" title="所有会员"><h2>所有会员</h2></a></li>
+                 </if>
+                 <if condition="check_premission('文章管理') "> 
+                 <li><a href="/admin.php/Home/Shop/zsbyg_list" target="rightFrame" ><img src="/sncss/images/nav_icon3_no.png" title="新闻公告"><h2>新闻公告</h2></a></li>
+                 </if>
+                 <if condition="check_premission('留言管理') "> 
+                 <li><a href="/admin.php/Home/Shop/ly_list/type/0/" target="rightFrame"><img src="/sncss/images/nav_icon4_no.png" title="未处理留言"><h2>未处理留言</h2></a></li>
+                 </if>
+                 <if condition="check_premission('奖金管理') "> 
+                 <li><a href="/admin.php/Home/Index/jjset" target="rightFrame"><img src="/sncss/images/nav_icon5_no.png" title="奖金设定"><h2>奖金设定</h2></a></li>
+                 </if>
+                  <if condition="check_premission('大转盘管理') "> 
+                 <li><a href="/admin.php/Home/Index/cj_set" target="rightFrame"><img src="/sncss/images/nav_icon8_no.png" title="抽奖设置"><h2>抽奖设置</h2></a></li>
+                 </if>
+                 <if condition="check_premission('管理员管理') "> 
+                 <li><a href="/admin.php/Home/Index/adminlist" target="rightFrame"><img src="/sncss/images/nav_icon6_no.png" title="管理员管理"><h2>管理员管理</h2></a></li> 
+                 </if>
+                </ul>
+        </td>
+        <td width="300" align="right" valign="top">
+          <div class="topright">    
+            <ul>
+            <li>{$Think.session.adminuser}，欢迎登录</li>
+            <if condition="check_premission('管理员管理') "> 
+            <li><span><img src="/sncss/images/nav_icon7.png" title="账号管理"></span><a href="/admin.php/Home/Index/adminlist"  target="rightFrame">账号管理 </a></li>
+             </if>
+            <li><span><img src="/sncss/images/nav_icon8.png" title="退出"></span><a href="/admin.php/Home/Login/logout" target="_parent">退出</a></li>
+            </ul>
+             
+            <!--<div class="user">
+            <span>admin</span>
+            <i>消息</i>
+            <b>5</b>
+            </div>-->    
+            
+            </div>
+
+        </td>
+      </tr>
+    </table>
+</body>
+</html>

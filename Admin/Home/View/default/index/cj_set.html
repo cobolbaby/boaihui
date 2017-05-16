@@ -1,0 +1,343 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dth">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+<script type="text/javascript" src='__PUBLIC__/Js/jquery-1.7.2.min.js'></script>
+<link rel="stylesheet" href="__PUBLIC__/Uploadify/uploadify.css"/>
+<link href="/sncss/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src='__PUBLIC__/Uploadify/jquery.uploadify.min.js'></script>
+</head>
+<style>
+    input[type="text"] {
+        border: 1px #cccccc solid;
+        height: 25px;
+        line-height: 25px;
+    }
+</style>
+<script type='text/javascript'>
+    var PUBLIC = '__PUBLIC__';
+    var uploadUrl = '{:U("Common/uploadFace")}';
+    var ROOT = '__ROOT__';
+</script>
+
+<script type="text/javascript">
+ //上传插件
+$(function() {
+  $('#award1').uploadify({
+		swf : PUBLIC + '/Uploadify/uploadify.swf',	//引入Uploadify核心Flash文件
+		uploader : uploadUrl,	//PHP处理脚本地址
+		width : 120,	//上传按钮宽度
+		height : 30,	//上传按钮高度
+		buttonImage : PUBLIC + '/Uploadify/browse-btn.png',	//上传按钮背景图地址
+		fileTypeDesc : 'Image File',	//选择文件提示文字
+		fileTypeExts : '*.jpeg; *.jpg; *.png; *.gif',	//允许选择的文件类型
+		onUploadSuccess : function (file, data, response) {
+			eval('var data = ' + data);
+			if (data.status) {
+				$('#award1-img').attr('src', ROOT + '/Uploads/' + data.path);
+				$('input[name=award1]').val('/Uploads/'+data.path);
+			} else {
+				alert(data.msg);
+			}
+		}
+	});
+	
+	$('#award2').uploadify({
+		swf : PUBLIC + '/Uploadify/uploadify.swf',	//引入Uploadify核心Flash文件
+		uploader : uploadUrl,	//PHP处理脚本地址
+		width : 120,	//上传按钮宽度
+		height : 30,	//上传按钮高度
+		buttonImage : PUBLIC + '/Uploadify/browse-btn.png',	//上传按钮背景图地址
+		fileTypeDesc : 'Image File',	//选择文件提示文字
+		fileTypeExts : '*.jpeg; *.jpg; *.png; *.gif',	//允许选择的文件类型
+		onUploadSuccess : function (file, data, response) {
+			eval('var data = ' + data);
+			if (data.status) {
+				$('#award2-img').attr('src', ROOT + '/Uploads/' + data.path);
+				$('input[name=award2]').val('/Uploads/'+data.path);
+			} else {
+				alert(data.msg);
+			}
+		}
+	});
+	
+	$('#award3').uploadify({
+		swf : PUBLIC + '/Uploadify/uploadify.swf',	//引入Uploadify核心Flash文件
+		uploader : uploadUrl,	//PHP处理脚本地址
+		width : 120,	//上传按钮宽度
+		height : 30,	//上传按钮高度
+		buttonImage : PUBLIC + '/Uploadify/browse-btn.png',	//上传按钮背景图地址
+		fileTypeDesc : 'Image File',	//选择文件提示文字
+		fileTypeExts : '*.jpeg; *.jpg; *.png; *.gif',	//允许选择的文件类型
+		onUploadSuccess : function (file, data, response) {
+			eval('var data = ' + data);
+			if (data.status) {
+				$('#award3-img').attr('src', ROOT + '/Uploads/' + data.path);
+				$('input[name=award3]').val('/Uploads/'+data.path);
+			} else {
+				alert(data.msg);
+			}
+		}
+	});
+	
+	$('#award4').uploadify({
+		swf : PUBLIC + '/Uploadify/uploadify.swf',	//引入Uploadify核心Flash文件
+		uploader : uploadUrl,	//PHP处理脚本地址
+		width : 120,	//上传按钮宽度
+		height : 30,	//上传按钮高度
+		buttonImage : PUBLIC + '/Uploadify/browse-btn.png',	//上传按钮背景图地址
+		fileTypeDesc : 'Image File',	//选择文件提示文字
+		fileTypeExts : '*.jpeg; *.jpg; *.png; *.gif',	//允许选择的文件类型
+		onUploadSuccess : function (file, data, response) {
+			eval('var data = ' + data);
+			if (data.status) {
+				$('#award4-img').attr('src', ROOT + '/Uploads/' + data.path);
+				$('input[name=award4]').val('/Uploads/'+data.path);
+			} else {
+				alert(data.msg);
+			}
+		}
+	});
+	
+	$('#award5').uploadify({
+		swf : PUBLIC + '/Uploadify/uploadify.swf',	//引入Uploadify核心Flash文件
+		uploader : uploadUrl,	//PHP处理脚本地址
+		width : 120,	//上传按钮宽度
+		height : 30,	//上传按钮高度
+		buttonImage : PUBLIC + '/Uploadify/browse-btn.png',	//上传按钮背景图地址
+		fileTypeDesc : 'Image File',	//选择文件提示文字
+		fileTypeExts : '*.jpeg; *.jpg; *.png; *.gif',	//允许选择的文件类型
+		onUploadSuccess : function (file, data, response) {
+			eval('var data = ' + data);
+			if (data.status) {
+				$('#award5-img').attr('src', ROOT + '/Uploads/' + data.path);
+				$('input[name=award5]').val('/Uploads/'+data.path);
+			} else {
+				alert(data.msg);
+			}
+		}
+	});
+	
+	$('#award6').uploadify({
+		swf : PUBLIC + '/Uploadify/uploadify.swf',	//引入Uploadify核心Flash文件
+		uploader : uploadUrl,	//PHP处理脚本地址
+		width : 120,	//上传按钮宽度
+		height : 30,	//上传按钮高度
+		buttonImage : PUBLIC + '/Uploadify/browse-btn.png',	//上传按钮背景图地址
+		fileTypeDesc : 'Image File',	//选择文件提示文字
+		fileTypeExts : '*.jpeg; *.jpg; *.png; *.gif',	//允许选择的文件类型
+		onUploadSuccess : function (file, data, response) {
+			eval('var data = ' + data);
+			if (data.status) {
+				$('#award6-img').attr('src', ROOT + '/Uploads/' + data.path);
+				$('input[name=award6]').val('/Uploads/'+data.path);
+			} else {
+				alert(data.msg);
+			}
+		}
+	});
+	
+	$('#award7').uploadify({
+		swf : PUBLIC + '/Uploadify/uploadify.swf',	//引入Uploadify核心Flash文件
+		uploader : uploadUrl,	//PHP处理脚本地址
+		width : 120,	//上传按钮宽度
+		height : 30,	//上传按钮高度
+		buttonImage : PUBLIC + '/Uploadify/browse-btn.png',	//上传按钮背景图地址
+		fileTypeDesc : 'Image File',	//选择文件提示文字
+		fileTypeExts : '*.jpeg; *.jpg; *.png; *.gif',	//允许选择的文件类型
+		onUploadSuccess : function (file, data, response) {
+			eval('var data = ' + data);
+			if (data.status) {
+				$('#award7-img').attr('src', ROOT + '/Uploads/' + data.path);
+				$('input[name=award7]').val('/Uploads/'+data.path);
+			} else {
+				alert(data.msg);
+			}
+		}
+	});
+	
+	$('#award8').uploadify({
+		swf : PUBLIC + '/Uploadify/uploadify.swf',	//引入Uploadify核心Flash文件
+		uploader : uploadUrl,	//PHP处理脚本地址
+		width : 120,	//上传按钮宽度
+		height : 30,	//上传按钮高度
+		buttonImage : PUBLIC + '/Uploadify/browse-btn.png',	//上传按钮背景图地址
+		fileTypeDesc : 'Image File',	//选择文件提示文字
+		fileTypeExts : '*.jpeg; *.jpg; *.png; *.gif',	//允许选择的文件类型
+		onUploadSuccess : function (file, data, response) {
+			eval('var data = ' + data);
+			if (data.status) {
+				$('#award8-img').attr('src', ROOT + '/Uploads/' + data.path);
+				$('input[name=award8]').val('/Uploads/'+data.path);
+			} else {
+				alert(data.msg);
+			}
+		}
+	});
+})
+</script>
+<body>
+
+<div class="place" >
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="#">首页</a></li>
+    <li><a href="#">抽奖设置</a></li>
+    </ul>
+</div>
+
+<div class="rightinfo">
+  <form action="/admin.php/Home/Index/cj_set"  name="xgmm" id="xgmm" method="post">
+	 
+<table width="90%" class="tablelist">
+  <tr>
+    <th width="146" bgcolor="#FFFFFF" class="tbkey" >抽奖使用钱包：</th>
+    <th colspan="4" bgcolor="#FFFFFF" class="tbval"><label>
+<input type="radio" name="award_wallet" value="2" checked="checked" />动态钱包</label><label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="radio" value="0" name="award_wallet"/>静态钱包</label><!-- <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="radio" value="1" name="award_wallet"/>
+    经理钱包</label>--></th>
+    </tr>
+    <script>
+	   $(function(){
+		  $("input[name='award_wallet'][value='{$award_wallet}']").attr("checked", true);   
+	   })
+	</script>
+  <tr>
+    <th bgcolor="#FFFFFF" class="tbkey" >每次扣除金币：</th>
+    <th colspan="4" bgcolor="#FFFFFF" class="tbval"><input type="text" name="lottery_fee" value="{$lottery_fee}" />
+      元</th>
+  </tr>
+  <tr>
+    <th bgcolor="#FFFFFF" class="tbkey" >每天抽奖次数：</th>
+    <th colspan="4" bgcolor="#FFFFFF" class="tbval">
+    <input type="text" name="lottery_count_per_day" value="{$lottery_count_per_day}" />
+      次  <font color="#FF0000">(0：为不限制)</font>
+    </th>
+    </tr>
+  <tr>
+    <th height="36" colspan="5" style="background:white;font-size:20px;">奖品设置<font color="red">[留空为再接再厉]</font></th>
+    </tr>
+  <tr>
+    <th bgcolor="#FFFFFF" class="tbkey" >等级</th>
+    <th width="194" bgcolor="#FFFFFF" class="tbval">奖品：</th>
+    <th width="232" bgcolor="#FFFFFF" class="tbval">概率<font color="red">（总概率为100%）</font></th>
+    <th width="257" bgcolor="#FFFFFF" class="tbval">奖品图片</th>
+    <th width="649" bgcolor="#FFFFFF" class="tbval">&nbsp;</th>
+  </tr>
+  <tr>
+    <th bgcolor="#FFFFFF" class="tbkey" style="background:white">一等奖：</th>
+    <th bgcolor="#FFFFFF" class="tbval" style="background:white"><input type="text" name="award1_award" value="{$award1_award}" /></th>
+    <th bgcolor="#FFFFFF" class="tbval" style="background:white"><input type="text" name="award1_rate" value="{$award1_rate}"/>
+      %</th>
+    <th bgcolor="#FFFFFF" class="tbval"  style="background:white">
+        <p><input type="file"  id='award1' /></p>
+        <input type="hidden" name='award1' value="{$award1}" />
+    </th>
+    <th bgcolor="#FFFFFF" class="tbval" style="background:white">
+        <img src="{$award1}" onerror="this.src=''" height='70' id='award1-img'/></th>
+  </tr>
+  <tr>
+   <th bgcolor="#FFFFFF" class="tbkey" style="background:white">二等奖：</th>
+    <th bgcolor="#FFFFFF" class="tbval" style="background:white"><input type="text" name="award2_award" value="{$award2_award}" /></th>
+    <th bgcolor="#FFFFFF" class="tbval" style="background:white"><input type="text" name="award2_rate" value="{$award2_rate}"/>
+      %</th>
+    <th bgcolor="#FFFFFF" class="tbval"  style="background:white">
+        <p><input type="file"  id='award2' /></p>
+        <input type="hidden" name='award2' value="{$award2}" />
+    </th>
+    <th bgcolor="#FFFFFF" class="tbval" style="background:white">
+        <img src="{$award2}" onerror="this.src=''" height='70' id='award2-img'/></th>
+  </tr>
+  <tr>
+    <th bgcolor="#FFFFFF" class="tbkey" style="background:white" > 三等奖：</th>
+    <th bgcolor="#FFFFFF" class="tbval" style="background:white"><input type="text" name="award3_award" value="{$award3_award}" /></th>
+    <th bgcolor="#FFFFFF" class="tbval" style="background:white"><input type="text" name="award3_rate" value="{$award3_rate}"/>
+      %</th>
+    <th bgcolor="#FFFFFF" class="tbval"  style="background:white">
+        <p><input type="file"  id='award3' /></p>
+        <input type="hidden" name='award3' value="{$award3}" />
+    </th>
+    <th bgcolor="#FFFFFF" class="tbval" style="background:white">
+        <img src="{$award3}" onerror="this.src=''" height='70' id='award3-img'/></th>
+  </tr>
+  <tr>
+    <th bgcolor="#FFFFFF" class="tbkey" style="background:white" >四等奖：</th>
+    <th bgcolor="#FFFFFF" class="tbval" style="background:white"><input type="text" name="award4_award" value="{$award4_award}" /></th>
+    <th bgcolor="#FFFFFF" class="tbval" style="background:white"><input type="text" name="award4_rate" value="{$award4_rate}"/>
+      %</th>
+    <th bgcolor="#FFFFFF" class="tbval"  style="background:white">
+        <p><input type="file"  id='award4' /></p>
+        <input type="hidden" name='award4' value="{$award4}" />
+    </th>
+    <th bgcolor="#FFFFFF" class="tbval" style="background:white">
+        <img src="{$award4}" onerror="this.src=''" height='70' id='award4-img'/></th>
+  </tr>
+  <tr>
+    <th bgcolor="#FFFFFF" class="tbkey" style="background:white" >五等奖：</th>
+    <th bgcolor="#FFFFFF" class="tbval" style="background:white"><input type="text" name="award5_award" value="{$award5_award}" /></th>
+    <th bgcolor="#FFFFFF" class="tbval" style="background:white"><input type="text" name="award5_rate" value="{$award5_rate}"/>
+      %</th>
+    <th bgcolor="#FFFFFF" class="tbval"  style="background:white">
+        <p><input type="file"  id='award5' /></p>
+        <input type="hidden" name='award5' value="{$award5}" />
+    </th>
+    <th bgcolor="#FFFFFF" class="tbval" style="background:white">
+        <img src="{$award5}" onerror="this.src=''" height='70' id='award5-img'/></th>
+  </tr>
+  <tr>
+    <th bgcolor="#FFFFFF" class="tbkey" style="background:white" >六等奖：</th>
+    <th bgcolor="#FFFFFF" class="tbval" style="background:white"><input type="text" name="award6_award" value="{$award6_award}" /></th>
+    <th bgcolor="#FFFFFF" class="tbval" style="background:white"><input type="text" name="award6_rate" value="{$award6_rate}"/>
+      %</th>
+    <th bgcolor="#FFFFFF" class="tbval"  style="background:white">
+        <p><input type="file"  id='award6' /></p>
+        <input type="hidden" name='award6' value="{$award6}" />
+    </th>
+    <th bgcolor="#FFFFFF" class="tbval" style="background:white">
+        <img src="{$award6}" onerror="this.src=''" height='70' id='award6-img'/></th>
+  </tr>
+  <tr>
+    <th height="140" bgcolor="#FFFFFF" class="tbkey"  style="background:white">活动说明：</th>
+    <th colspan="4" align="left" bgcolor="#FFFFFF" class="tbval"  style="background:white">
+    <script charset="utf-8" src="__PUBLIC__/kindeditor/kindeditor.js"></script>
+<script charset="utf-8" src="__PUBLIC__/kindeditor/lang/zh_CN.js"></script>
+        <script>
+    KindEditor.ready(function(K) {
+        var editor1 = K.create('textarea[name="content"]', {
+            cssPath : '__PUBLIC__/kindeditor/plugins/code/prettify.css',
+            uploadJson : '__PUBLIC__/kindeditor/php/upload_json.php',
+            fileManagerJson : '__PUBLIC__/kindeditor/php/file_manager_json.php',
+            allowFileManager : false,
+			items:['bold','italic','justifyleft','justifycenter','justifyright','fontsize','forecolor','hilitecolor','fontname','fullscreen'],
+            afterCreate : function() {
+                var self = this;
+                K.ctrl(document, 13, function() {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+                K.ctrl(self.edit.doc, 13, function() {
+                    self.sync();
+                    K('form[name=example]')[0].submit();
+                });
+            }
+        });
+        prettyPrint();
+    });
+</script>
+<textarea name="content" style="width:700px;height:200px;visibility:hidden;">{$content}</textarea>
+    </th>
+    </tr>
+  
+</table>
+<!--基本信息結束-->
+<br/>
+<div align="center"><input name="" type="submit" class="btn" value="确定"/>	</div>	
+  </form>
+   
+    </div>
+</body>
+
+</html>	

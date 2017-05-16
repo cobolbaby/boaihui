@@ -1,0 +1,525 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="ie lt-ie9 lt-ie8 lt-ie7 fluid top-full sidebar sidebar-full sticky-sidebar">
+<![endif]-->
+<!--[if IE 7]>
+<html class="ie lt-ie9 lt-ie8 fluid top-full sticky-top sidebar sidebar-full sticky-sidebar">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie lt-ie9 fluid top-full sticky-top sidebar sidebar-full sticky-sidebar">
+<![endif]-->
+<!--[if gt IE 8]>
+<html class="ie gt-ie8 fluid top-full sticky-top sidebar sidebar-full sticky-sidebar">
+<![endif]-->
+<!--[if!IE]><!-->
+<html>
+<!--<![endif]-->
+
+<head>
+<script type="text/javascript" src="/bitStyle/js/jquery.js">
+</script>
+<script type="text/javascript" src="/bitStyle/js/bootstrap.min.js">
+</script>
+<script type="text/javascript" src="/bitStyle/js/modernizr.js">
+</script>
+<script type="text/javascript" src="/bitStyle/js/selectivizr.js">
+</script>
+<script type="text/javascript" src="/bitStyle//js/jquery.cookie.js">
+</script>
+<script type="text/javascript" src="/bitStyle/js/scripts.js">
+</script>
+<script type="text/javascript" src="/bitStyle/js/remaining.js">
+</script>
+<script type="text/javascript" src="/bitStyle/js/fn_number_format.js">
+</script>
+<script type="text/javascript" src="/bitStyle/js/9acba5c0d35076a1ccd574dfc21b8b2b.js">
+</script>
+<script type="text/javascript" src="/bitStyle/js/layer.js"></script>
+<script src="/cssmmm/jquery.countdown.js"></script>
+<script type="text/javascript">
+
+  var _gNow = new Date();
+
+  jQuery(document).ready(function($) {
+    var gdBtn = $('#gdBtn');
+    var pdBtn = $('#pdBtn');
+    pdBtn.click(function() {
+      $(this).toggleClass('active');
+      gdBtn.removeClass('active');
+      $('#pdWrap').stop(true, false).slideToggle('fast');
+      $('#gdWrap').stop(true, false).slideUp('fast').removeClass('open');
+      return false
+    });
+    gdBtn.click(function() {
+      $(this).toggleClass('active');
+      pdBtn.removeClass('active');
+      $('#gdWrap').stop(true, false).slideToggle('fast');
+      $('#pdWrap').stop(true, false).slideUp('fast').removeClass('open');
+      return false
+    });
+    $('.tip').tooltip({
+      placement: 'top'
+    });
+    $('.tipr').tooltip({
+      placement: 'right'
+    });
+    $('.tipb').tooltip({
+      placement: 'bottom'
+    });
+    $('.tipl').tooltip({
+      placement: 'left'
+    });
+    $("a[href='#top']").click(function() {
+      $("html, body").animate({
+        scrollTop: 0
+      },
+      "slow");
+      return false
+    });
+    var _server_time = new Date(),
+        _server_time2 = new Date(),
+        _local_time = new Date(),
+        _local_time2 = new Date();
+        _server_time2 = new Date(),
+        _local_time = new Date(),
+        _local_time2 = new Date();
+    _timer = setInterval(function() {
+      var now = new Date();
+      true_elapsed = Math.round((now.getTime() - _gNow.getTime()) / 1000);
+      second = _local_time.getTime() + 1000;
+      elapsed = Math.round((second - _local_time2.getTime()) / 1000);
+      if (elapsed < true_elapsed) {
+        diff = true_elapsed - elapsed;
+        second += (diff * 1000)
+      }
+      _local_time.setTime(second);
+      second = _server_time.getTime() + 1000;
+      elapsed = Math.round((second - _server_time2.getTime()) / 1000);
+      if (elapsed < true_elapsed) {
+        diff = true_elapsed - elapsed;
+        second += (diff * 1000)
+      }
+      _server_time.setTime(second);
+      date_text = padNumber(_server_time.getHours()) + ':' + padNumber(_server_time.getMinutes()) + ':' + padNumber(_server_time.getSeconds());
+      date_text += ' ' + _server_time.getDate() + '/' + (_server_time.getMonth() + 1) + '/' + _server_time.getFullYear();
+      $('#server_time_text').html(date_text);
+      date_text = padNumber(_local_time.getHours()) + ':' + padNumber(_local_time.getMinutes()) + ':' + padNumber(_local_time.getSeconds());
+      date_text += ' ' + _local_time.getDate() + '/' + (_local_time.getMonth() + 1) + '/' + _local_time.getFullYear();
+      $('#local_time_text').html(date_text)
+    },
+    1000);
+    function padNumber(number) {
+      return (number >= 0 && number < 10) ? '0' + number: number
+    }
+  });
+</script>
+<link rel="stylesheet" href="/bitStyle/css/bootstrap.min.css" type="text/css"/>
+<link rel="stylesheet" href="/bitStyle/css/font-awesome.min.css" type="text/css"/>
+<link rel="stylesheet" href="/bitStyle/css/main.v001.css" type="text/css"/>
+<link rel="stylesheet" href="/bitStyle/css/fileupload.css" type="text/css"/>
+<title>{$config.title}
+</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE"/>
+<!--Favicons-->
+<link rel="shortcut icon" href="/bitStyle/favicon.ico" type="image/x-icon">
+</head>
+<body class="zh-CN ">
+<include file="User/Home/View/default/common_header.html" />
+<include file="User/Home/View/default/top2.html" />
+<!-- Main Wrapper -->
+<div id="wrapper">
+<include file="User/Home/View/default/common_main.html" />
+<div class="row">
+    <div class="col-md-12">                                                                                             
+	<form class="margin-none" name="register_form" action="{:U('Index/regadd')}" method="post" id="register_form">                 
+	    <div class="widget widget-body-white padding-none">
+		<div class="widget-head">
+		    <h4 class="heading">注册新会员</h4>
+		</div>
+		<div class="widget-body">
+		    <div class="row"  style=" padding:10px;">
+		    <div class="form-group col-lg-6">
+		     <label>登入用户名</label>
+			<input type="text" id="username" class="form-control" name="email"  required="">
+		    </div>
+		     <div class="form-group col-lg-6">
+			<label>姓名<span  style="color:#0034dd;">(请务必填写真实收款姓名)</span></label>
+			<input type="text" id="realname" class="form-control" name="username"  maxlength="60" required>
+		    </div>
+		    <div class="col-lg-12">
+			<div class="row">
+			
+			    <div class="form-group col-lg-12">
+				<p style="height:20px;">
+				<label style="float:left;">手机号码<span  style="color:#0034dd;">(不可修改)</span></label>
+				<span style="clear:both;"></span>
+				</p>
+				<div style="width:200px; float:left;">
+				<select id="codett" name="codett" class="form-control">
+				<option value="">中国大陆+86</option>
+				<option value="+886">台湾+886</option>
+				<option value="+852">香港+852</option>
+				<option value="+60">马来西亚+60</option>
+				<option value="+65">新加坡+65</option>
+				<option value="+81">日本+81</option>
+				<option value="+82">韩国+82</option>
+				<option value="+1">美国+1</option>
+				<option value="+1">加拿大+1</option>
+				<option value="+61">奥大利亚+61</option>
+				<option value="+64">新西兰+64</option>
+				<option value="+54">阿根廷+54</option>
+				<option value="+971">阿联酋+971</option>
+				<option value="+353">爱尔兰+353</option>
+				<option value="+20">埃及+20</option>
+				<option value="+372">爱沙尼亚+372</option>
+				<option value="+43">奥地利+43</option>
+				<option value="+853">澳门+853</option>
+				<option value="+1242">巴哈马+1242</option>
+				<option value="+507">巴拿马+507</option>
+				<option value="+55">巴西+55</option>
+				<option value="+375">白俄罗斯+375</option>
+				<option value="+359">保加利亚+359</option>
+				<option value="+32">比利时+32</option>
+				<option value="+48">波兰+48</option>
+				<option value="+501">伯利兹+501</option>
+				<option value="+45">丹麦+45</option>
+				<option value="+49">德国+49</option>
+				<option value="+7">俄罗斯+7</option>
+				<option value="+33">法国+33</option>
+				<option value="+63">菲律宾+63</option>
+				<option value="+358">芬兰+358</option>
+				<option value="+57">哥伦比亚+57</option>
+				<option value="+31">荷兰+31</option>
+				<option value="+996">吉尔吉斯斯坦+996</option>
+				<option value="+855">柬埔寨+855</option>
+				<option value="+974">卡塔尔+974</option>
+				<option value="+370">立陶宛+370</option>
+				<option value="+352">卢森堡+352</option>
+				<option value="+40">罗马尼亚+40</option>
+				<option value="+960">马尔代夫+960</option>
+				<option value="+976">蒙古+976</option>
+				<option value="+51">秘鲁+51</option>
+				<option value="+212">摩洛哥+212</option>
+				<option value="+52">墨西哥+52</option>
+				<option value="+27">南非+27</option>
+				<option value="+234">尼日利亚+234</option>
+				<option value="+47">挪威+47</option>
+				<option value="+351">葡萄牙+351</option>
+				<option value="+46">瑞典+46</option>
+				<option value="+41">瑞士+41</option>
+				<option value="+381">塞尔维亚+381</option>
+				<option value="+248">塞舌尔+248</option>
+				<option value="+966">沙特阿拉伯+966</option>
+				<option value="+94">斯里兰卡+94</option>
+				<option value="+66">泰国+66</option>
+				<option value="+90">土耳其+90</option>
+				<option value="+216">突尼斯+216</option>
+				<option value="+58">委内瑞拉+58</option>
+				<option value="+380">乌克兰+380</option>
+				<option value="+34">西班牙+34</option>
+				<option value="+30">希腊+30</option>
+				<option value="+36">匈牙利+36</option>
+				<option value="+39">意大利+39</option>
+				<option value="+972">以色列+972</option>
+				<option value="+91">印度+91</option>
+				<option value="+62">印度尼西亚62</option>
+				<option value="+44">英国+44</option>
+				<option value="+1284">英属维尔京群岛+1284</option>
+				<option value="+962">约旦+962</option>
+				<option value="+84">越南+84</option>
+				<option value="+56">智利+56</option>
+				</select>
+				</div>
+				<div style="width:400px; float:left;">
+				<input type="text" id="phone" class="form-control" name="phone" maxlength="13"  required="">	
+				</div>
+				<div style="width:400px; float:left;">
+				<font id="alert_phone" style="color:#FF0000; float:left;"></font>
+				</div>
+				<div style="clear:both;"></div>	
+			    </div>
+				
+			    <!--<div class="form-group col-lg-6">
+				<label style="width:100%; float:left;">&nbsp;</label>
+				<input type="text" id="phonetex" class="form-control" style="width:153px; float:left;" name="phonetex" maxlength="13"  required="">
+				<div class="getverima"><div id="getverima" title="获取短信验证码" disabled="disabled"><span id="timeLeft"></span><span id="verimaTip">获取短信验证码</span></div></div>
+			    </div><div style="clear:both;"><p style="padding:0 20px;"></p></div>-->
+			</div>
+		    </div>
+		    <div class="col-lg-12">
+			<div class="row">
+			    <div class="form-group col-lg-6">
+				<label>介绍人用户名</label>
+				 <div class="input-group"> <input type="text" value="{$userData['ue_account']}" id="pemail" class="form-control" name="pemail"  required="" readonly> 
+				 <span class="input-group-btn"><input name="check_jsr" id="check_jsr" type="button" class="btn btn-default btn-sm pemailcheck" value="检查"> </span></div>
+			       <font id="alert_pemail"></font>
+			    </div>
+			    <div class="form-group col-lg-6">
+				<label style="padding-top:20px;">激活码<span style="color:#0034dd;">(余额: {$pin_zs}个)</span></label>
+			    </div>
+			</div>
+		    </div>
+		    <div class="form-group col-lg-6">
+			<label>登录密码</label>
+			<input type="password" id="password" class="form-control" name="password"  min="6" required>
+		    </div>
+		    <div class="form-group col-lg-6">
+			<label>确认登录密码</label>
+			<input type="password" id="password2" class="form-control" name="password2"  required="">
+		    </div>
+		    <div class="form-group col-lg-6">
+			<label>二级密码</label>
+			<input name="secpwd" type="password" class="form-control" id="cpassword"  min="6" required>
+		    </div>
+		    <div class="form-group col-lg-6">
+			<label>确认二级密码</label>
+			<input name="resecpwd" type="password" class="form-control" id="cpassword2"  required="">
+		    </div>
+
+		    <div class="form-group col-lg-6" style="display:none;">
+			<label>密保问题</label>
+			    <select id="question" name="question" class="form-control">
+				 <option value="0">----请选择问题----</option>
+                 <option value="q1" selected>您的生日是什么时间？</option>
+                 <option value="q2">您最喜欢人的叫什么名字？</option>
+                 <option value="q3">您最喜欢的是什么？</option>
+                 <option value="q4">您父亲的名字叫什么？</option>   
+			    </select>
+		    </div>
+		    <div class="form-group col-lg-6" style="display:none;">
+			<label><font color="red">*</font>密保答案</label>
+			<input type="" id="answer" class="form-control" name="answer" autocomplete="off" value="1111">
+		    </div>
+
+  <div class="form-group">
+                                <label class="col-md-3 control-label">激活码<span class="ast">*</span></label>
+                                <div class="col-md-9"><input class="form-control" id="code" name="code"  type="text" value="{$pin1.pin}"  required readonly></div>
+                            </div>
+
+		    <div class="checkbox col-lg-12">
+			<div class="icheckbox_square-green checked" style="position: relative;"></div>
+		      <input name="ty" type="checkbox" id="ty" value="ye" checked>
+		      我已完全了解所有风险。
+		    </div>
+		    </div>
+		    <div class="data-footer innerAll half text-right clearfix" style="text-align:center; padding:10px;">
+			<button type="button" class="btn btn-primary" onClick="reg()">注册</button>                         
+			<input type="hidden" name="ip" id="ip" value="{:get_client_ip()}" />
+			<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>  
+			<script>document.getElementById('ip').value=returnCitySN["cip"];</script>
+		    </div>
+		</div>
+	    </div>
+	</form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">                                                                                             
+	<form class="margin-none" name="register_form" action="{:U('Index/regadd')}" method="post" id="register_form">                 
+	    <div class="widget widget-body-white padding-none">
+		<div class="widget-head">
+		    <h4 class="heading">激活码使用记录</h4>
+		</div>
+		<div class="widget-body">
+
+<!--table-->
+<div class="row">
+    <div class="col-lg-12">
+    	 <div class="col-md-12">
+        <div class="hpanel">
+            
+            <div class="panel-body">
+                <div class="table-responsive">
+                 <div id="example_wrapper" class="dataTables_wrapper no-footer">
+                   <table id="example" cellpadding="1" cellspacing="1" class="table table-bordered table-striped cus_datatable dataTable no-footer" role="grid" aria-describedby="example_info">
+                <thead>
+                  <tr role="row"><th class="sorting_desc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="descending" aria-label="编号: activate to sort column ascending" style="width: 99px;">编号</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="用户: activate to sort column ascending" style="width: 299px;">用户</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="新用户: activate to sort column ascending" style="width: 283px;">新用户</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-label="注册时间: activate to sort column ascending" style="width: 254px;">注册时间</th></tr>
+                </thead>
+                <tbody>
+				
+				<foreach name='list' item='v'>
+				
+                                  <tr role="row" class="odd">
+                      <td class="sorting_1">{$v.ue_id}</td>
+                      <td>{$v.zcr}</td>
+                      <td>{$v.ue_account}</td>
+                      <td>{$v.ue_regtime}</td>
+                    </tr>
+					</foreach>
+					
+					</tbody>
+              </table>
+                 <div class="dataTables_info" id="example_info" role="status" aria-live="polite">{$page}</div>
+                 </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+		</div>
+	    </div>
+    </div>
+
+</div><!--//end wrapper-->
+                        
+						
+<script>
+    function reg() {
+	
+        if ($("#username").val() == "") {
+            layer.msg("请填写用户名");
+            return false;
+        }
+	else if($("#code").val() ==""){
+	    layer.msg("请填写激活码");
+            return false;
+	}
+	else if ($("#realname").val() == "") {
+            layer.msg("请填写姓名");
+            return false;
+        }
+	else if ($("#phone").val() == "") {
+            layer.msg("请填写手机号");
+            return false;
+        }
+	else if ($("#pemail").val() == "") {
+            layer.msg("请填写推荐人");
+            return false;
+        }
+        else if ($("#password").val() == "") {
+            layer.msg("请填写密码");
+            return false;
+        }
+        else if ($("#password").val() != $("#password2").val()) {
+            layer.msg("两次密码不一致");
+            return false;
+        }
+        else if ($("#cpassword").val() == "") {
+            layer.msg("请填写二级密码");
+            return false;
+        }
+        else if ($("#cpassword").val() != $("#cpassword2").val()) {
+            layer.msg("两次二级密码不一致");
+            return false;
+        }
+
+        if (!isMobile($("#phone").val())) {
+            layer.msg("手机格式不正确");
+            return false;
+        }
+	 
+	 if({$pin_zs} == 0 || "{$pin1.pin}" == ""){
+	     alert("请填写可用的激活码!");
+	 }else{
+	     $("#register_form").submit();
+	 }
+    }
+
+    function isMobile(str) {
+        var myreg = /^[0-9]*$/;
+        //var myreg = /^([0]?)(((13[0-9]{1})|(14[0-9]{1})|(15[0-9]{1})|(16[0-9]{1})|(17[0-9]{1})|(18[0-9]{1})|(19[0-9]{1}))+\d{8})$/;
+        return myreg.test(str);
+    }
+
+    function isEmail(str) {
+        var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+        return reg.test(str);
+    }
+
+    var wait = 60;
+
+    function time(o) {       
+
+        if ($("#phone").val() == "") {
+            layer.msg("请填写手机号");
+            return false;
+        }       
+
+        if (!isMobile($("#phone").val())) {
+            layer.msg("手机格式不正确");
+            return false;
+        }
+
+        //$.post("{:U('Reg/sendPhone')}", { phone: $("#mobile").val() }, function(msg) { layer.msg("验证码已经发送，注意查收"); });
+        //okssss(o);
+    }
+
+$(function(){
+
+$('#check_jsr').click(function() {
+    var $dfzh = $('#pemail').val();
+    var $action = '/Home/Myuser/xm';
+    $.post($action,{dfzh:$dfzh},function(data){
+	if(data.sf == 0){
+	    document.getElementById('alert_pemail').innerHTML = data.nr;
+	}else{
+	    document.getElementById('alert_pemail').innerHTML = data;
+	}
+    });
+});
+
+
+$('#phone').blur(function() {
+var $dfzh = $('#phone').val();
+var $action = '/Home/Myuser/xmb';
+$.post($action,{dfzh:$dfzh},function(data){
+if(data.sf == 0){
+document.getElementById('alert_phone').innerHTML = data.nr;
+}else{
+document.getElementById('alert_phone').innerHTML = data;
+}
+});
+});
+
+
+var intDiff =0;
+$('#getverima').click(function() {
+if(intDiff<=0){
+	
+	var $dfzh = $('#phone').val();
+	var $action = '/Home/Myuser/xmbb';
+	$.post($action,{dfzh:$dfzh},function(data){
+	
+	    intDiff = parseInt(60);//倒计时总秒数量
+	    var timer = window.setInterval(function(){
+	    document.getElementById ("getverima").title =''+intDiff+'秒后重新获取';
+	    document.getElementById ('verimaTip').innerHTML=''+intDiff+'秒后重新获取';
+	    intDiff--;
+	    if(intDiff<0){
+		    clearInterval(timer);
+		    document.getElementById ("getverima").title ='获取短信验证码';
+		    document.getElementById ('verimaTip').innerHTML='获取短信验证码';
+		    document.getElementById('alert_phone').innerHTML = '';
+	    }
+	    }, 1000);
+	
+	    if(data.sf == 0){
+		    document.getElementById('alert_phone').innerHTML = data.nr;
+	    }
+	});
+}
+
+});
+
+});
+
+$(function () {       
+    $('input:checkbox').each(function() {
+	if ($(this).attr('checked') ==true) {
+	    alert($(this).val());
+	}
+    });
+});
+
+</script>
+
+
+</body></html>

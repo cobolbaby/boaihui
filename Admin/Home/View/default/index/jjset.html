@@ -1,0 +1,383 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>无标题文档</title>
+    <link href="/sncss/css/style.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="/zTree_v3/css/zTreeStyle/zTreeStyle.css" type="text/css"/>
+    <script type=text/javascript src="/zTree_v3/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/zTree_v3/js/jquery.ztree.core-3.5.js"></script>
+
+    <script type=text/javascript>
+        var setting = {
+            view: {
+                showLine: true
+            },
+            data: {
+                simpleData: {
+                    enable: true
+                }
+            }
+        };
+
+        var zNodes = [
+            {id: 1, pId: 0, name: "父節點1 - 展開", open: true},
+            {id: 11, pId: 1, name: "父節點11 - 摺疊"},
+            {id: 111, pId: 11, name: "葉子節點111"},
+            {id: 112, pId: 11, name: "葉子節點112"},
+            {id: 113, pId: 11, name: "葉子節點113"},
+            {id: 114, pId: 11, name: "葉子節點114"},
+            {id: 12, pId: 1, name: "父節點12 - 摺疊"},
+            {id: 121, pId: 12, name: "葉子節點121"},
+            {id: 122, pId: 12, name: "葉子節點122"},
+            {id: 123, pId: 12, name: "葉子節點123"},
+            {id: 124, pId: 12, name: "葉子節點124"},
+            {id: 13, pId: 1, name: "父節點13 - 沒有子節點", isParent: true},
+            {id: 2, pId: 0, name: "父節點2 - 摺疊"},
+            {id: 21, pId: 2, name: "父節點21 - 展開", open: true},
+            {id: 211, pId: 21, name: "葉子節點211"},
+            {id: 212, pId: 21, name: "葉子節點212"},
+            {id: 213, pId: 21, name: "葉子節點213"},
+            {id: 214, pId: 21, name: "葉子節點214"},
+            {id: 22, pId: 2, name: "父節點22 - 摺疊"},
+            {id: 221, pId: 22, name: "葉子節點221"},
+            {id: 222, pId: 22, name: "葉子節點222"},
+            {id: 223, pId: 22, name: "葉子節點223"},
+            {id: 224, pId: 22, name: "葉子節點224"},
+            {id: 23, pId: 2, name: "父節點23 - 摺疊"},
+            {id: 231, pId: 23, name: "葉子節點231"},
+            {id: 232, pId: 23, name: "葉子節點232"},
+            {id: 233, pId: 23, name: "葉子節點233"},
+            {id: 234, pId: 23, name: "葉子節點234"},
+            {id: 3, pId: 0, name: "父節點3 - 沒有子節點", isParent: true}
+        ];
+
+
+        $(document).ready(function () {
+            var $user1 = $('#user1').val();
+            $.ajax({
+                type: "post",
+                dataType: "json",
+                global: false,
+                url: "/admin.php/Home/Common/getTree",
+                data: {
+                    user1: $user1
+                },
+                success: function (data, textStatus) {
+                    if (data.status == 0) {
+                        zNodes1 = data.data;
+                        $.fn.zTree.init($("#treeDemo"), setting, zNodes1);
+                    } else {
+                        alert("您還沒有");
+                    }
+
+                    return;
+                }
+
+            });
+
+            //$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+        });
+
+
+        $(function () {
+
+
+            $('#btn').click(function () {
+
+                var $user = $('#user').val();
+                $.ajax({
+                    type: "post",
+                    dataType: "json",
+                    global: false,
+
+                    url: "/admin.php/Home/Common/getTreeso",
+                    data: {
+                        user: $user
+                    },
+                    success: function (data, textStatus) {
+                        if (data.status == 0) {
+                            //alert(data.nr);
+
+                            zNodes1 = data.data;
+                            $.fn.zTree.init($("#treeDemo"), setting, zNodes1);
+                        } else {
+                            alert(data.data);
+                        }
+
+                        return;
+                    }
+
+                });
+
+
+            })
+
+
+        })
+
+
+    </script>
+</head>
+<style>
+    input {
+        border: 1px #cccccc solid;
+        height: 25px;
+        line-height: 25px;
+    }
+</style>
+<body>
+
+<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+        <li><a href="#">首页</a></li>
+        <li><a href="#">奖金设定</a></li>
+    </ul>
+</div>
+
+<div class="rightinfo">
+  <div class="tools"></div>
+    <table class="tablelist" style="min-width:1000px;">
+        <form action="{:U('Home/Index/jjset')}" method="post">
+            <thead>
+            <tr>
+              <th width="15%">进场资金总额度</th>
+              <th width="85%">
+              <input name="max_pd_amount" value="{$max_pd_amount}" type="number" />
+              元 &nbsp;&nbsp;（控制每天所有会员提供帮助的进场资金总额度）
+              </th>
+            </tr>
+            <tr>
+                <th width="15%">最低额度-最高额度</th>
+                <th width="85%"><input name="jj01s" value="{$jj01s}" type="" />元 — <input name="jj01m" value="{$jj01m}" type="" />元 必须<input name="jj01" value="{$jj01}" type="" />元的整倍数</th>
+            </tr>
+            <tr>
+                <th width="15%">新会员注册奖励</th>
+                <th width="85%"><input name="reg_jiangli" value="{$reg_jiangli}" type="number" />元</th>
+            </tr>
+            <!--  <tr>
+                <th width="15%">每次排单所需排单币</th>
+                <th width="85%"><input name="ue_cyj" value="{$ue_cyj}" type="number" />元</th>
+            </tr> -->
+            <tr>
+              <th>会员每天接受帮助排单数量</th>
+              <th><input name="js_bz_limit" value="{$js_bz_limit}" type="number" />单(0 表示不限制，每天可以申请提取一单)</th>
+            </tr>
+                        <tr>
+                <th width="15%">提供帮助最大等待未完成单数</th>
+                <th width="85%"><input name="paidan_nums" value="{$paidan_nums}" type="number" />单(0 表示不限制，如果有单子未匹配，就不能再申请)</th>
+            </tr>
+            <tr>
+                <th width="15%">接受帮助最大等待未完成单数</th>
+                <th width="85%"><input name="accept_nums" value="{$accept_nums}" type="number" />单(0 表示不限制，如果有单子未匹配，就不能再申请)</th>
+            </tr>
+            <!--            <tr>
+                <th width="15%">备用接口（不用设置）</th>
+                <th width="85%"><input name="jjfhdays" value="{$jjfhdays}" type="number" />天</th>
+            </tr>-->
+           
+            <!--<tr>
+                <th width="15%">刚注册会员提供帮助冻结天数</th>
+                <th width="85%"><input name="reg_days" value="{$reg_days}" type="number" />天&nbsp;&nbsp;(0表示不冻结，已注册就可以提供帮助，1表示注册一天后，才可以提供帮助，等其他操作)</th>
+            </tr>-->
+           <!--  <tr>
+                <th width="15%">匹配天数</th>
+                <th width="85%"><input name="jjppdays" value="{$jjppdays}" type="number" />天</th>
+            </tr> -->
+
+            <tr>
+                <th width="15%">是否开启时间限制</th>
+                <th width="85%">
+                    <select name="time_limit">
+                        <option <if condition="$time_limit eq 1" >selected</if> value="1">开启</option>
+                        <option <if condition="$time_limit eq 0" >selected</if> value="0">关闭</option>
+                    </select>
+                </th>
+            </tr>
+            <tr>
+                <th width="15%">每天提供帮助排单开始时间</th>
+                <th width="85%"><input  name="paidan_time_start"  placeholder="请输入开始时间" value="{$paidan_time_start}">(格式：9:59,23:59,9:4不要输9:04)</th>
+            </tr>
+            <tr>
+                <th width="15%">每天提供帮助排单结束时间</th>
+                <th width="85%"><input  name="paidan_time_end"  placeholder="请输入结束时间" value="{$paidan_time_end}">(格式：9:59,23:59,9:4不要输9:04)</th>
+            </tr>
+            <tr>
+              <th>我愿意排队的天数</th>
+              <th>
+                <select name="pd_days">
+                        <option <if condition="$pd_days eq 1" >selected</if> value="1">开启</option>
+                        <option <if condition="$pd_days eq 0" >selected</if> value="0">关闭</option>
+                    </select>
+              </th>
+            </tr>
+            <tr>
+              <th>排单是否拆分</th>
+              <th>
+                <select name="is_cf">
+                        <option <if condition="$is_cf eq 1" >selected</if> value="1">开启</option>
+                        <option <if condition="$is_cf eq 0" >selected</if> value="0">关闭</option>
+                    </select>
+              </th>
+            </tr>
+            <tr>
+              <th>排单拆分比例</th>
+              <th><input  name="cf_rate"  placeholder="请输入拆分比例" value="{$cf_rate}" />
+                (格式：0.2, 0.8; 0.3,0.7 只能一分为2，而且总和为1)</th>
+            </tr>
+            
+            <tr>
+              <th>排单币使用</th>
+              <th>
+              <div>
+              挂单金额 
+                <input name="pd_amount_s1" value="{$pd_amount_s1}" type="" />
+                元 —
+                  <input name="pd_amount_e1" value="{$pd_amount_e1}" type="" />
+                  元 , 需
+                  <input name="pd_coin_count1" value="{$pd_coin_count1}" type="" />
+              个排单币
+              </div>
+              
+              <div>
+              挂单金额 
+                <input name="pd_amount_s2" value="{$pd_amount_s2}" type="" />
+                元 —
+                  <input name="pd_amount_e2" value="{$pd_amount_e2}" type="" />
+                  元 , 需
+                  <input name="pd_coin_count2" value="{$pd_coin_count2}" type="" />
+              个排单币
+              </div>
+              
+              <div>
+              挂单金额 
+                <input name="pd_amount_s3" value="{$pd_amount_s3}" type="" />
+                元 —
+                  <input name="pd_amount_e3" value="{$pd_amount_e3}" type="" />
+                  元 , 需
+                  <input name="pd_coin_count3" value="{$pd_coin_count3}" type="" />
+              个排单币
+              </div>
+              </th>
+            </tr>
+            <tr>
+              <th>接受帮助前需要必须挂单</th>
+              <th><select name="is_pd">
+                <option 
+                <if condition="$is_pd eq 1" >selected</if>
+                 value="1">开启
+                </option>
+                <option 
+                <if condition="$is_pd eq 0" >selected</if>
+                 value="0">关闭
+                </option>
+              </select></th>
+            </tr>
+            <tr>
+              <th>复投金额要大于等于（前一单多少）</th>
+              <th><input  name="is_pd_rate"  placeholder="" value="{$is_pd_rate}" />
+                %</th>
+            </tr>
+
+            <tr>
+                <th width="15%">会员每天提供帮助排单数量</th>
+                <th width="85%"><input  name="paidan_num"  placeholder="会员每天排单数量" value="{$paidan_num}">单</th>
+            </tr>
+            <tr>
+                <th width="15%">每天会员提供帮助排单总额度</th>
+                <th width="85%"><input  name="paidan_jbs"  placeholder="会员每天排单总额度" value="{$paidan_jbs}">元</th>
+            </tr>
+           
+
+            <tr>
+                <th width="15%">会员提供帮助月投资额度封顶</th>
+                <th width="85%"><input name="month_max" value="{$month_max}" type="number" />元</th>
+            </tr>
+<!--            <tr>
+                <th width="15%">直推奖</th>
+                <th width="85%"><input name="jjtuijianrate" value="{$jjtuijianrate}" type="number" />%</th>
+            </tr>-->
+            <tr>
+                <th width="15%">等级与动态奖</th>
+                <th width="85%">
+                    B0 刚注册会员 <br />
+
+                    B1 打完第一笔款即升级，可拿1代奖<input type="text" size="5" name="lv1_1" value="{:C('lv1_1')}"/>% <br />
+
+                    B2 培养<input type="text" size="5" name="uplv2" value="{:C(
+                    'uplv2')}">个B1，可拿1代<input type="text" size="5" name="lv2_1" value="{:C('lv2_1')}"/>%，2代<input type="text" size="5" name="lv2_2" value="{:C('lv2_2')}"/>% <br />
+
+                    B3 培养<input type="text" size="5" name="uplv3" value="{:C(
+                    'uplv3')}"/>个B2，可拿1代<input type="text" size="5" name="lv3_1" value="{:C('lv3_1')}"/>%，2代<input type="text" size="5" name="lv3_2" value="{:C('lv3_2')}"/>%，3代<input type="text" size="5" name="lv3_3" value="{:C('lv3_3')}"/>% <br />
+
+                    B4 培养<input type="text" size="5" name="uplv4" value="{:C(
+                    'uplv4')}"/>个B3，可拿1代<input type="text" size="5" name="lv4_1" value="{:C('lv4_1')}"/>%，2代<input type="text" size="5" name="lv4_2" value="{:C('lv4_2')}"/>%，3代<input type="text" size="5" name="lv4_3" value="{:C('lv4_3')}"/>%，4代<input type="text" size="5" name="lv4_4" value="{:C('lv4_4')}"/>% <br />
+
+                    B5 培养<input type="text" size="5" name="uplv5" value="{:C(
+                    'uplv5')}"/>个B4，可拿1代<input type="text" size="5" name="lv5_1" value="{:C('lv5_1')}"/>%，2代<input type="text" size="5" name="lv5_2" value="{:C('lv5_2')}"/>%，3代<input type="text" size="5" name="lv5_3" value="{:C('lv5_3')}"/>%，4代<input type="text" size="5" name="lv5_4" value="{:C('lv5_4')}"/>% <br />
+
+                    B6 培养<input type="text" size="5" name="uplv6" value="{:C(
+                    'uplv6')}"/>个B5，可拿1代<input type="text" size="5" name="lv6_1" value="{:C('lv6_1')}"/>%，2代<input type="text" size="5" name="lv6_2" value="{:C('lv6_2')}"/>%，3代<input type="text" size="5" name="lv6_3" value="{:C('lv6_3')}"/>%，4代<input type="text" size="5" name="lv6_4" value="{:C('lv6_4')}"/>% <br />
+
+                    经理 培养<input type="text" size="5" name="uplv7" value="{:C(
+                    'uplv7')}"/>个B6，可拿1代<input type="text" size="5" name="lv7_1" value="{:C('lv7_1')}"/>%，2代<input type="text" size="5" name="lv7_2" value="{:C('lv7_2')}"/>%，3代<input type="text" size="5" name="lv7_3" value="{:C('lv7_3')}"/>%，无限代<input type="text" size="5" name="lv7_4" value="{:C('lv7_4')}"/>% <br />
+
+                   <!--  冻结 <input type="text" name="dtlock" value="{:C('dtlock')}" size="5"> 天<br /> -->
+                </th>
+            </tr>
+<!--            <tr>
+                <th width="15%">会员级别每月任务最大数</th>
+                <th width="85%"><input name="per_task" value="{$per_task}" style="width:300px;" type="" />个 用,号分隔</th>
+            </tr>-->
+            <tr>
+                <th width="15%">打款时间</th>
+                <th width="85%"><input name="jjdktime" value="{$jjdktime}" type="number" />小时</th>
+            </tr>
+             <tr>
+               <th><p >收款确认</p></th>
+               <th><input name="skqrtime" value="{$skqrtime}" type="number" />
+                 小时</th>
+             </tr>
+             <tr>
+                <th width="15%">超时未打款冻结提示语</th>
+                <th width="85%"><input name="jjhydjmsg" value="{$jjhydjmsg}" type="text" size="100"/></th>
+            </tr>
+             <tr>
+                <th width="15%">超时未打款扣除上级金额</th>
+                <th width="85%"><input name="jjhydjkcsjmoeney" value="{$jjhydjkcsjmoeney}" type="number" />元</th>
+            </tr>
+
+				<tr>
+                <th width="15%">开启微信支付</th>
+                <th width="85%">
+					<select name="wxzfpay">
+						<option <if condition="$wxzfpay eq 1" >selected</if> value="1">开启</option>
+						<option <if condition="$wxzfpay eq 0" >selected</if> value="0">关闭</option>
+					</select>
+				</th>
+            </tr>
+			
+             <tr>
+                <th width="15%">短信接口账号</th>
+                <th width="85%"><input name="mobile_account" value="{$mobile_account}" type="password" /></th>
+            </tr>
+
+            <tr>
+                <th width="15%">短信接口密码</th>
+                <th width="85%"><input name="mobile_password" value="{$mobile_password}" type="password" /></th>
+            </tr>
+
+
+            <tr>
+                <th></th>
+                <th><input  style="border:none;width:175px;height:40px; font-size:16px; cursor:pointer; line-height:40px;background:#61afdf;color:#fff;text-align:center;text-indent:0;margin:0 0 0 30%;display:block;" name="submit" value="提交" type="submit"/></th>
+            </tr>
+            </thead>
+        </form>
+    </table>
+
+</div>
+</body>
+</html>

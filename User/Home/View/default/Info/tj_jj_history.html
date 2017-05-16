@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="ie lt-ie9 lt-ie8 lt-ie7 fluid top-full sidebar sidebar-full sticky-sidebar"> <![endif]-->
+<!--[if IE 7]>    <html class="ie lt-ie9 lt-ie8 fluid top-full sticky-top sidebar sidebar-full sticky-sidebar"> <![endif]-->
+<!--[if IE 8]>    <html class="ie lt-ie9 fluid top-full sticky-top sidebar sidebar-full sticky-sidebar"> <![endif]-->
+<!--[if gt IE 8]> <html class="ie gt-ie8 fluid top-full sticky-top sidebar sidebar-full sticky-sidebar"> <![endif]-->
+<!--[if !IE]><!--><html><!-- <![endif]-->
+<head>
+
+
+<script type="text/javascript" src="/bitStyle/js/jquery.js"></script>
+<script type="text/javascript" src="/bitStyle/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/bitStyle/js/modernizr.js"></script>
+<script type="text/javascript" src="/bitStyle/js/selectivizr.js"></script>
+<script type="text/javascript" src="/bitStyle/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="/bitStyle/js/scripts.js"></script>
+<script type="text/javascript" src="/bitStyle/js/remaining.js"></script>
+<script type="text/javascript" src="/bitStyle/js/fn_number_format.js"></script>
+<script type="text/javascript" src="/bitStyle/js/9acba5c0d35076a1ccd574dfc21b8b2b.js"></script>
+		<script type="text/javascript">
+			var _gNow = new Date();
+		</script>
+		
+
+<script type="text/javascript">
+jQuery(document).ready(function($){
+	var gdBtn = $('#gdBtn');
+	var pdBtn = $('#pdBtn');
+	
+	pdBtn.click(function(){
+		$(this).toggleClass('active');
+		gdBtn.removeClass('active');
+		$('#pdWrap').stop(true, false).slideToggle('fast');
+		$('#gdWrap').stop(true, false).slideUp('fast').removeClass('open');
+		return false;
+	});
+	// if user status is freeze or just unblock and not yet do the maintain
+	gdBtn.click(function(){
+		$(this).toggleClass('active');
+		pdBtn.removeClass('active');
+		$('#gdWrap').stop(true, false).slideToggle('fast');
+		$('#pdWrap').stop(true, false).slideUp('fast').removeClass('open');
+		return false;
+	});
+		
+	// Tooltips
+	$('.tip').tooltip({placement: 'top'});
+	$('.tipr').tooltip({placement: 'right'});
+	$('.tipb').tooltip({placement: 'bottom'});
+	$('.tipl').tooltip({placement: 'left'});
+	
+	$("a[href='#top']").click(function() {
+		$("html, body").animate({ scrollTop: 0 }, "slow");
+		return false;
+	});
+	
+	var _server_time = new Date(),
+        _server_time2 = new Date(),
+        _local_time = new Date(),
+        _local_time2 = new Date();
+        _server_time2 = new Date(),
+        _local_time = new Date(),
+        _local_time2 = new Date();
+	
+	_timer = setInterval(function(){
+		var now = new Date();
+		true_elapsed = Math.round((now.getTime() - _gNow.getTime()) / 1000); 		//synchronize & increment 1 second
+		second = _local_time.getTime() + 1000;
+		elapsed = Math.round((second - _local_time2.getTime()) / 1000);
+		if(elapsed < true_elapsed){
+			diff = true_elapsed - elapsed;
+			second += (diff * 1000);
+		}
+		_local_time.setTime(second);
+		second = _server_time.getTime() + 1000;
+		elapsed = Math.round((second - _server_time2.getTime()) / 1000);
+		if(elapsed < true_elapsed){
+			diff = true_elapsed - elapsed;
+			second += (diff * 1000);
+		}
+		_server_time.setTime(second);
+		
+		//update server time
+		date_text = padNumber(_server_time.getHours())+':'+padNumber(_server_time.getMinutes())+':'+padNumber(_server_time.getSeconds());
+		date_text += ' ' + _server_time.getDate()+'/'+(_server_time.getMonth()+1)+'/'+_server_time.getFullYear();
+		$('#server_time_text').html(date_text);
+		//update local time
+		date_text = padNumber(_local_time.getHours())+':'+padNumber(_local_time.getMinutes())+':'+padNumber(_local_time.getSeconds());
+		date_text += ' ' + _local_time.getDate()+'/'+(_local_time.getMonth()+1)+'/'+_local_time.getFullYear();
+		$('#local_time_text').html(date_text);
+	}, 1000);
+	
+	/**
+	* @param number An integer
+	* @return Integer padded with a 0 if necessary
+	*/
+	function padNumber(number) {
+		return (number >= 0 && number < 10) ? '0' + number : number;
+	}
+});
+</script>
+
+
+<link rel="stylesheet" href="/bitStyle/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="/bitStyle/css/font-awesome.min.css" type="text/css" />
+<link rel="stylesheet" href="/bitStyle/css/main.v001.css" type="text/css" />
+
+
+<title>{$config.title} -  经理/会员级别钱包记录 </title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
+
+
+<!-- Favicons -->
+<link rel="shortcut icon" href="/bitStyle/favicon.ico" type="image/x-icon">
+
+</head>
+<body class="zh-CN ">
+
+<div id="wrapper">            
+            
+            <div class="row">
+				<div class="col-md-12">
+					<div class="widget">
+						<div class="widget-head clearfix">
+							<h4 class="heading">推荐奖记录</h4>
+						</div>
+						<div class="widget-body innerAll overthrow">
+							<table class="table table-bordered table-primary">
+								<thead>
+									<tr class="tac">
+										<th>编号</th>
+										<th>日期 </th>
+										<th>详情</th>
+										<th>原金额(RMB)</th>
+										<th>+收入</th>
+										<th>新余额(RMB)</th>										
+									</tr>
+								</thead>
+								<tbody>
+                                        <foreach name='list4' item='b'>
+
+                                            <tr role="row" class="odd">
+                                                <td class="sorting_1">{$b.ug_id}</td>
+                                                <td>{$b.ug_gettime}</td>
+                                                <td>{$b.ug_note}</td>
+                                                <td>{$b.ug_allget}</td>
+                                                <td>{$b.ug_money}</td>
+                                                <td>{$b.ug_balance}</td>
+                                            </tr>
+
+                                        </foreach>
+
+                                        </tbody>
+                                    </table>
+                            <div class="dataTables_paginate paging_simple_numbers" id="example_paginate">
+                                {$page4}
+                            </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
+

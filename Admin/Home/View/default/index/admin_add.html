@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="/sncss/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/sncss/js/jquery.js"></script>
+
+
+<style>
+  #permission li{ float:left; width:110px; line-height:0px; clear:none;}
+</style>
+</head>
+
+<body>
+
+	<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="#">首页</a></li>
+    <li><a href="#">表单</a></li>
+    </ul>
+    </div>
+    
+    <div class="formbody">
+    
+    <div class="formtitle"><span>基本信息</span></div>
+      <form id="form1" name="form1" method="post" action="/admin.php/Home/Index/adminadd">
+
+    <ul class="forminfo">
+	<li><label>用户名</label><input name="MB_username" type="text" class="dfinput" value="" /><i>不可修改</i></li>
+	<li><label>权限</label>
+	<cite>
+	<input name="MB_right" type="radio" value="1" />超级管理员&nbsp;&nbsp;&nbsp;&nbsp;<input name="MB_right" type="radio" value="0" checked="checked" />普通管理员
+	</cite>
+	</li>
+    <li id="permission"><label>功能项</label>
+         <ul style="margin-left:85px;">
+             <li><label><input type="checkbox" name="permission[]" value="基本操作"/> 基本操作</label></li>
+             <li><label><input type="checkbox" name="permission[]" value="会员管理"/> 会员管理</label></li>
+             <li><label><input type="checkbox" name="permission[]" value="文章管理"/> 文章管理</label></li>
+             <li><label><input type="checkbox" name="permission[]" value="留言管理"/> 留言管理</label></li>
+             <li><label><input type="checkbox" name="permission[]" value="激活码管理"/> 激活码管理</label></li>
+             <li><label><input type="checkbox" name="permission[]" value="排单码管理"/> 排单码管理</label></li>
+             <li><label><input type="checkbox" name="permission[]" value="任务管理"/> 任务管理</label></li>
+             <li><label><input type="checkbox" name="permission[]" value="奖金管理"/> 奖金管理</label></li>
+			 <li><label><input type="checkbox" name="permission[]" value="大转盘管理"/> 大转盘管理</label></li>
+             <li><label><input type="checkbox" name="permission[]" value="匹配系统"/> 匹配系统</label></li>
+             <li><label><input type="checkbox" name="permission[]" value="备份/恢复"/> 备份/恢复</label></li>
+         </ul>
+    </li>
+    <li><label>密碼</label><input name="MB_userpwd" type="text" class="dfinput" /><i></i></li>
+    <li><label>二级密碼</label><input name="MB_secondary_code" type="text" class="dfinput" /><i></i></li>
+    <li><label>&nbsp;</label><input name="" type="submit" class="btn" value="确认保存"/></li>
+    </ul>
+     </form>
+    
+    </div>
+<script>
+  $(function(){
+	 if($("input[name='MB_right']:checked").val() == "1"){
+		$("#permission input").attr("checked", "checked");
+		$("#permission").hide();
+	 }
+	  
+	 $("input[name='MB_right']").click(function(){
+		 if($("input[name='MB_right']:checked").val() == "1"){
+			 $("#permission").hide();
+			 $("#permission input").attr("checked", "checked");
+		 }else{
+		     $("#permission").show();
+			 $("#permission input").removeAttr("checked");
+		 }
+	 })
+  })
+</script>
+
+</body>
+
+</html>

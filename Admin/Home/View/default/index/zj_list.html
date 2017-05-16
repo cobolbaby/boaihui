@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="/sncss/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/sncss/js/jquery.js"></script>
+<script type="text/javascript" src="/sncss/layer/layer.js"></script>
+<script type="text/javascript" src="/sncss/layer/extend/layer.ext.js"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".click").click(function(){
+  $(".tip").fadeIn(200);
+  });
+  
+  $(".tiptop a").click(function(){
+  $(".tip").fadeOut(200);
+});
+
+  $(".sure").click(function(){
+  $(".tip").fadeOut(100);
+});
+
+  $(".cancel").click(function(){
+  $(".tip").fadeOut(100);
+});
+
+});
+</script>
+
+
+</head>
+
+
+<body>
+
+	<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="#">首页</a></li>
+    <li><a href="#">抽奖设置</a></li>
+    <li><a href="#">中奖信息</a></li>
+    </ul>
+    </div>
+    
+    <div class="rightinfo">
+    
+    <table class="tablelist">
+    	<thead>
+    	<tr>
+        <th>编号<i class="sort"><img src="/sncss/images/px.gif" /></i></th>
+        <th>会员</th>
+        <th>中奖信息</th>
+        <th>添加时间</th>
+        <th>备注</th>
+        <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+		
+		<foreach name='list' item='v'>
+        <tr>
+		 <td>{$v.id}</td>
+		 <td>{$v.user_id}</td>
+		  <td>{$v.award_detail}</td>
+		   <td>{$v.add_time}</td>
+		   <td id="gift_memo_{$v.id}">
+             {$v.memo}
+           </td>
+          <td id="gift_status_{$v.id}">
+           <if condition='$v.status == 0'>
+	          <a href="###" onclick="get_gift({$v.id})" class="tablelink">待领取</a>
+           <else />
+               已领取
+           </if>
+          </td>
+        </tr> 
+       </foreach>
+        </tbody>
+    </table>
+    <style>.pages a,.pages span {
+    display:inline-block;
+    padding:2px 5px;
+    margin:0 1px;
+    border:1px solid #f0f0f0;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px;
+}
+.pages a,.pages li {
+    display:inline-block;
+    list-style: none;
+    text-decoration:none; color:#58A0D3;
+}
+.pages a.first,.pages a.prev,.pages a.next,.pages a.end{
+    margin:0;
+}
+.pages a:hover{
+    border-color:#50A8E6;
+}
+.pages span.current{
+    background:#50A8E6;
+    color:#FFF;
+    font-weight:700;
+    border-color:#50A8E6;
+}</style>
+   
+   <div class="pages"><br />
+
+                        <div align="right">{$page}
+                        </div>
+   </div>
+</div>
+    
+    <script type="text/javascript">
+	$('.tablelist tbody tr:odd').addClass('odd');
+	
+	function get_gift(id){
+		layer.prompt({
+	        title: '请输入备注信息，并确认',
+            formType: 2
+		 },function(val){
+			var tmp = val.replace(/\'/g, '‘');
+			layer.load();
+	        $.ajax({
+			   url:'/admin.php/Home/index/zj_lq/id/'+id+'/',
+			   data:{"memo":tmp},
+			   success:function(data){
+			       if(data == 0){
+				      layer.msg("操作失败!");
+				   }else{
+				      layer.msg("操作成功!");
+					  $("#gift_status_"+id).text("已领取");
+					  $("#gift_memo_"+id).text(tmp);
+				   }
+				   layer.closeAll('loading');
+			   }
+			})
+		 });
+	}
+	</script>
+
+</body>
+
+</html>

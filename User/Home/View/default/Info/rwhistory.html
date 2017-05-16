@@ -1,0 +1,294 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="ie lt-ie9 lt-ie8 lt-ie7 fluid top-full sidebar sidebar-full sticky-sidebar"> <![endif]-->
+<!--[if IE 7]>    <html class="ie lt-ie9 lt-ie8 fluid top-full sticky-top sidebar sidebar-full sticky-sidebar"> <![endif]-->
+<!--[if IE 8]>    <html class="ie lt-ie9 fluid top-full sticky-top sidebar sidebar-full sticky-sidebar"> <![endif]-->
+<!--[if gt IE 8]> <html class="ie gt-ie8 fluid top-full sticky-top sidebar sidebar-full sticky-sidebar"> <![endif]-->
+<!--[if !IE]><!--><html><!-- <![endif]-->
+<head>
+
+
+<script type="text/javascript" src="/bitStyle/js/jquery.js"></script>
+<script type="text/javascript" src="/bitStyle/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/bitStyle/js/modernizr.js"></script>
+<script type="text/javascript" src="/bitStyle/js/selectivizr.js"></script>
+<script type="text/javascript" src="/bitStyle/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="/bitStyle/js/scripts.js"></script>
+<script type="text/javascript" src="/bitStyle/js/remaining.js"></script>
+<script type="text/javascript" src="/bitStyle/js/fn_number_format.js"></script>
+<script type="text/javascript" src="/bitStyle/js/9acba5c0d35076a1ccd574dfc21b8b2b.js"></script>
+		<script type="text/javascript">
+			var _gNow = new Date();
+		</script>
+		
+
+<script type="text/javascript">
+jQuery(document).ready(function($){
+	var gdBtn = $('#gdBtn');
+	var pdBtn = $('#pdBtn');
+	
+	pdBtn.click(function(){
+		$(this).toggleClass('active');
+		gdBtn.removeClass('active');
+		$('#pdWrap').stop(true, false).slideToggle('fast');
+		$('#gdWrap').stop(true, false).slideUp('fast').removeClass('open');
+		return false;
+	});
+	// if user status is freeze or just unblock and not yet do the maintain
+	gdBtn.click(function(){
+		$(this).toggleClass('active');
+		pdBtn.removeClass('active');
+		$('#gdWrap').stop(true, false).slideToggle('fast');
+		$('#pdWrap').stop(true, false).slideUp('fast').removeClass('open');
+		return false;
+	});
+	
+	$("a[href='#top']").click(function() {
+		$("html, body").animate({ scrollTop: 0 }, "slow");
+		return false;
+	});
+	
+	var _server_time = new Date(),
+        _server_time2 = new Date(),
+        _local_time = new Date(),
+        _local_time2 = new Date();
+        _server_time2 = new Date(),
+        _local_time = new Date(),
+        _local_time2 = new Date();
+	
+	_timer = setInterval(function(){
+		var now = new Date();
+		true_elapsed = Math.round((now.getTime() - _gNow.getTime()) / 1000); 		//synchronize & increment 1 second
+		second = _local_time.getTime() + 1000;
+		elapsed = Math.round((second - _local_time2.getTime()) / 1000);
+		if(elapsed < true_elapsed){
+			diff = true_elapsed - elapsed;
+			second += (diff * 1000);
+		}
+		_local_time.setTime(second);
+		second = _server_time.getTime() + 1000;
+		elapsed = Math.round((second - _server_time2.getTime()) / 1000);
+		if(elapsed < true_elapsed){
+			diff = true_elapsed - elapsed;
+			second += (diff * 1000);
+		}
+		_server_time.setTime(second);
+		
+		//update server time
+		date_text = padNumber(_server_time.getHours())+':'+padNumber(_server_time.getMinutes())+':'+padNumber(_server_time.getSeconds());
+		date_text += ' ' + _server_time.getDate()+'/'+(_server_time.getMonth()+1)+'/'+_server_time.getFullYear();
+		$('#server_time_text').html(date_text);
+		//update local time
+		date_text = padNumber(_local_time.getHours())+':'+padNumber(_local_time.getMinutes())+':'+padNumber(_local_time.getSeconds());
+		date_text += ' ' + _local_time.getDate()+'/'+(_local_time.getMonth()+1)+'/'+_local_time.getFullYear();
+		$('#local_time_text').html(date_text);
+	}, 1000);
+	
+	/**
+	* @param number An integer
+	* @return Integer padded with a 0 if necessary
+	*/
+	function padNumber(number) {
+		return (number >= 0 && number < 10) ? '0' + number : number;
+	}
+});
+</script>
+
+
+<link rel="stylesheet" href="/bitStyle/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="/bitStyle/css/font-awesome.min.css" type="text/css" />
+<link rel="stylesheet" href="/bitStyle/css/main.v001.css" type="text/css" />
+
+
+<title>{$config.title} - 我的静态钱包 </title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
+
+
+<!-- Favicons -->
+<link rel="shortcut icon" href="/bitStyle/favicon.ico" type="image/x-icon">
+
+</head>
+<body class="zh-CN " id="">
+
+<include file="User/Home/View/default/common_header.html" />
+<include file="User/Home/View/default/top2.html" />
+
+<div id="wrapper">
+		
+		<include file="User/Home/View/default/common_main.html" />
+
+			<div class="row">
+			
+			
+				<div class="col-md-12">
+					<div class="widget">
+						<div class="widget-head clearfix">
+							<h4 class="heading">我的静态钱包</h4>
+						</div>
+						<div class="widget-body innerAll overthrow">
+							<table class="table table-bordered table-primary">
+								<thead>
+									<tr class="tac">
+										<th>编号</th>
+										<th>日期</th>
+										<th>说明</th>
+										<th>金额 </th>
+										<th>利息 </th>
+										<th>天数</th>
+										<th>提现 </th>
+										<th>是否转出</th>
+										<th>匹配编号</th>
+										<th>匹配状态</th>
+									</tr>
+								</thead>
+							 <tbody>
+
+                                        <foreach name='v_list' item='v'>
+
+                                            <tr role="row" class="odd">
+                                                <td class="sorting_1">{$aab=$v.id}</td>
+                                                <td>{$v.date}</td>
+                                                <td>提供帮助</td>
+                                                <td>{$v.jb}</td>
+                                                <td>{$ztrs|user_jj_lx_jerry=$aab,###}</td>
+                                                <td>{$ztrs3|user_jj_ts_jerry=$aab,###}</td>
+                                                <td>
+                                                    <if condition="$v.zt eq '0'">(不可提现)
+                                                        <else/>
+                                                        已转出
+                                                    </if>
+                                                </td>
+                                                <td>{$v.id|user_tgbz_jerry=$aab,###}</td>
+                                                <td>未匹配</td>
+                                                <td>排队中</td>
+                                            </tr>
+                                        </foreach>
+                                        <foreach name='list1' item='v'>
+
+                                            <tr role="row" class="odd">
+                                                <td class="sorting_1">{$aab=$v.id}</td>
+                                                <td>{$v.date}</td>
+                                                <td>{$v.note}</td>
+                                                <td>{$v.jb}</td>
+                                                <td>总合计{$v|w_peidui_lx=###}</td>
+                                                <td>{$v|pd_lx_v1_day=###}天</td>
+                                                <td>
+                                                    <if condition="$v.zt eq '0'">
+                  <!--  <font color="#FF0000">恭喜你获得{$paidui_lx}+X的日息</font> -->({$ztrs1|user_jj_zt_z=$aab,###})<br>
+                  
+                   <if condition='user_jj_zt_z($aab) eq "可以提现"'>
+                   <a href="javascript:if(confirm('转出后本金+利息直接进入静态钱包，确定要转出吗？'))location='/Home/Info/tgbz_tx_cl/id/{$v.id}/'">点击确认提款</a>
+                   </if>
+				    <else/>
+				    已转出
+				</if>
+                                                </td>
+                                                <td>
+                                                    <if condition="$v.zt eq '0'">未转出</if>
+                                                    <if condition="$v.zt eq '1'">已转出</if>
+                                                </td>
+                                                <td>R{$bbh=$v.r_id}</td>
+                                                <td>{$ztrs2|user_jj_pipei_z=$bbh,###}</td>
+                                            </tr>
+                                        </foreach>
+                                    </table>
+                                    <div class="dataTables_paginate paging_simple_numbers" id="example_paginate">
+                                        {$page1}
+                                    </div>
+					</div>
+				</div>
+			</div>
+			<!--<div class="col-md-12">
+	<div style=" background-color:#0f8d4d; padding:10px; padding-bottom:20px; margin-bottom:20px; color:#fff;border-radius:5px;">
+	<h4 class="font-light m-b-xs">平台制度：</h4>
+	<p><strong style="color:#ffff00;">会员与利息：</strong><br>
+	<table width="100%" border="1" align="center" bordercolor="#FFFFFF">
+  <tr>
+    <th scope="col">会员级别</th>
+    <th scope="col">升级条件</th>
+    <th scope="col">日息</th>
+    <th scope="col">推荐奖及代数</th>
+    <th scope="col">经理奖</th>
+    <th scope="col">每月排单次数(最少-最多)</th>
+  </tr>
+  <tr>
+    <th scope="row">M1</th>
+    <td>新注册用户</td>
+    <td>排队1%，打款后2%</td>
+    <td>拿1代，6%</td>
+    <td>0</td>
+    <td>1-3</td>
+  </tr>
+  <tr>
+    <th scope="row">M2</th>
+    <td>伞下团队3人</td>
+    <td>排队1%，打款后2%</td>
+    <td>拿2代，6%&gt;5%</td>
+    <td>0</td>
+    <td>2-4</td>
+  </tr>
+  <tr>
+    <th scope="row">M3</th>
+    <td>团队9人，直推2人</td>
+    <td>排队1%，打款后2%</td>
+    <td>拿3代,6%&gt;5%&gt;4%</td>
+    <td>0</td>
+    <td>3-5</td>
+  </tr>
+  <tr>
+    <th scope="row">M4</th>
+    <td>团队27人，直推4人</td>
+    <td>排队1%，打款后2%</td>
+    <td>拿4代,6%&gt;5%&gt;4%&gt;3%</td>
+    <td>0</td>
+    <td>4-7</td>
+  </tr>
+  <tr>
+    <th scope="row">M5</th>
+    <td>团队81人，直推6人</td>
+    <td>排队1%，打款后2%</td>
+    <td>拿5代,6%&gt;5%&gt;4%&gt;3%&gt;2%</td>
+    <td>0</td>
+    <td>5-9</td>
+  </tr>
+  <tr>
+    <th scope="row">平台经理</th>
+    <td>团队243人，直推8人</td>
+    <td>排队1%，打款后2%</td>
+    <td>拿6代,6%&gt;5%&gt;4%&gt;3%&gt;2%&gt;1%</td>
+    <td>0.4%无限代</td>
+    <td>6-11</td>
+  </tr>
+  <tr>
+    <th scope="row">高级经理</th>
+    <td>团队729人，直推10人</td>
+    <td>排队1%，打款后2%</td>
+    <td>拿7代，6%&gt;5%&gt;4%&gt;3%&gt;2%&gt;1%&gt;0.5%</td>
+    <td>0.6%无限代</td>
+    <td>6-12</td>
+  </tr>
+</table><br>
+	<p><strong style="color:#ffff00;">注册与排单：</strong><br>
+	1、注册激活码200元/个，注册成功后立返200到用户的静态钱包中(相当于不要钱)。<br>
+	3、排队期间日息1%，排队最多10天，玩家排单时自由选择排队天数。<br>
+	4、打款确认后进入"高息期"，日息(2%+级别加息)。不限制计息时间，提现后停止计息。<br>
+	5、提供帮助需要排单币，排单币不能购买，只有完成平台的每日任务，才能获得排单币！每天只能做一次任务！每天最多排2个单	</p>
+	<p><strong style="color:#ffff00;">提现规则：</strong><br>
+	1、提供帮助匹配确认后进入高息期，高息期必须大于2天提现。<br>
+	2、静态钱包2000起提现，必须500的倍数。<br>
+	3、推荐奖钱包每次提现范围为1000-5000，500的倍数，每天限提现1次。每周提现封顶30000。<br>
+    4、经理奖钱包每次提现范围为1000-5000，500的倍数，每天限提现1次。每周提现封顶15000。</p>
+	<p><strong style="color:#ffff00;">匹配与打款：</strong><br>
+	1、提现后匹配时间为48小时。匹配后打款时间24小时，收款后确认时间24小时。<br>
+	2、超时未打款直接封号，并扣除上级金额500。<br>
+	3、超时未确认冻结账号。</p>
+	</div>
+    </div>-->
+		</div>
+	</div>
+</body>
+</html>
+

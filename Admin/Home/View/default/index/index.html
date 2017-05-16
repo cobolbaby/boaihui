@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="/sncss/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/sncss/js/jquery.js"></script>
+
+</head>
+
+
+<body style="background:#eee;win-width:1000px;">
+
+	<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+    <li><a href="#">首页</a></li>
+    </ul>
+    </div>
+      <if condition="check_premission('管理员管理') ">
+    <div class="mainindex">
+    
+    <!-- <div class="welinfo">
+    <span><img src="/sncss/images/sun.png" alt="天气" /></span>
+    <b>admin，欢迎使用信息管理系统</b><a href="/admin.php/Home/Index/adminlist">帐号设置</a>
+    </div> -->
+
+
+
+ <div class="Abottom" style="margin-top:0px;">
+<div class="box-content ">
+<div class="top" style="margin-bottom:10px;"><img src="/sncss/images/sj.png"><span>系统统计（<b style="color:red;font-size:16px;">总会员：{$zuser}&nbsp;&nbsp;&nbsp;&nbsp;今天注册会员：{$jtzchy}&nbsp;&nbsp;&nbsp;&nbsp;昨天注册会员：{$ztzchy}</b>）</span></div>
+
+
+<input type="button" class="button purple" value="系统开关">
+ <if condition="$zt.zt eq '0'" >
+<input type="button" class="button yellow" value="开启">:<a href="/admin.php/Home/Index/gb"><input type="button" class="button black" value="关闭系统"></a>
+ <else/>
+<input type="button" class="button black" value="关闭">：<a href="/admin.php/Home/Index/kq"><input type="button" class="button yellow" value="开启系统"></a> </if>
+<if condition="$scip.ip eq ''" >
+ <input type="button" class="button  green" value="未登过">
+<else/>
+
+ <input type="button" class="button  green" value="上次登录：{$scip.ip}({$scip.date})"> / <input type="button" class="button blue" value="本次登入IP:{$bcip.ip}({$bcip.date})"></if>
+    
+        </div>
+
+    </div>
+
+
+    <div class="Atop">
+        <div>
+            <a href="/admin.php/Home/Index/team">
+                <span><img src="/sncss/images/Atop1.png"></span>
+                <span>会员关系图</span>
+            </a>
+        </div>
+        <div>
+            <a href="/admin.php/Home/Shop/zsbyg_list_xg">
+                <span><img src="/sncss/images/Atop2.png"></span>
+                <span>添加公告</span>
+            </a>
+        </div>
+        <div>
+            <a href="/admin.php/Home/Index/jbzs">
+                <span><img src="/sncss/images/Atop3.png"></span>
+                <span>静态钱包赠送</span>
+            </a>
+        </div>
+        <div>
+            <a href="/admin.php/Home/Index/pin_add">
+                <span><img src="/sncss/images/Atop4.png"></span>
+                <span>生成激活码</span>
+            </a>
+        </div>
+        <div>
+            <a href="/admin.php/Home/Index/pin_list">
+                <span><img src="/sncss/images/Atop5.png"></span>
+                <span>PIN管理</span>
+            </a>
+        </div>
+		<div>
+            <a href="/admin.php/Home/Index/cj_set">
+                <span><img src="/sncss/images/Atop7.png"></span>
+                <span>抽奖设置</span>
+            </a>
+        </div>
+		<div>
+            <a href="/admin.php/Home/Index/hot">
+                <span><img src="/sncss/images/Atop8.png"></span>
+                <span>抢单大厅</span>
+            </a>
+        </div>
+		
+		
+		
+        <div>
+            <a href="/admin.php/Home/Index/ts1_list">
+                <span><img src="/sncss/images/Atop6.png"></span>
+                <span>超时未打款查询</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="Acenter">
+        <div class="left">
+            <div class="top"><img src="/sncss/images/sj.png"><span>数据统计</span></div>
+            <div class="center"><img src="/sncss/images/p-donation-white.png"><span>提供帮助总人数:{$t_man_count}</span></div>
+            <div class="bottom">
+                <span>总提现：{$j_jgbz}</span>
+                <span>交易成功：{$t_jgbz2}</span>
+                <span>交易中：{$t_jgbz3}</span>
+            </div>
+        </div>
+        <div class="left right">
+            <div class="top"></div>
+            <div class="center"><img src="/sncss/images/g-donation-white.png"><span>接受帮助总人数：{$j_man_count}</span></div>
+            <div class="bottom">
+                <span>总接受：{$j_jgbz} </span>
+                <span>交易成功：{$j_jgbz2}</span>
+               <span>交易中：{$j_jgbz3}</span>     </div>
+        </div>
+    </div>
+
+	
+	
+  </if>
+  
+    <div class="Abottom">
+        <div class="top"><img src="/sncss/images/xx.png"><span>系统信息</span></div>
+        <div class="content">
+            <div>
+                <span>服务器时间</span>
+                <span>{$time}</span>
+            </div>
+            <div class="bg">
+                <span>服务器信息</span>
+                <span>{$sys1}</span>
+            </div>
+            <div>
+                <span>PHP版本</span>
+                <span>{$version}</span>
+            </div>
+            <div class="bg">
+                <span>客户端IP</span>
+                <span>{$client_ip}</span>
+            </div>
+            <div>
+                <span>服务器语言</span>
+                <span>{$language}</span>
+            </div>
+            <div class="bg">
+                <span>服务器Web端口</span>
+                <span>{$port}</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="uimakerinfo"><b>管理公告</b></div>
+    
+    <ul class="umlist">
+    <li><small>系统开关:<a href="/admin.php/Home/Index/gb">关闭系统</a>
+      <br />
+上次登入IP:未登过 <br />
+本次登入IP:(2016-07-16 19:05:48)</small></li>
+   
+    </ul> -->
+ 
+    
+    </div>
+    
+    
+
+</body>
+
+</html>
