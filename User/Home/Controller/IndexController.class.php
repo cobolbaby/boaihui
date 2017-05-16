@@ -630,7 +630,6 @@ public function home() {
 		$map ['UG_account'] = $_SESSION ['uname'];
 		$map ['UG_type'] = 'yb';
 		//$map ['UG_dataType'] = array('IN',array('mrfh','tjj','kdj','mrldj','glj'));
-		$data =  $_GET ;
 		if (! empty ( $date1 ) && ! empty ( $date2 )) {
 			$map ['UG_getTime'] = array (
 					array (
@@ -666,7 +665,6 @@ public function home() {
             $arr = explode('=', $value);
             $datas[$arr[0]] = $arr[1];        
         }    
-        M($data['tb'])->add($datas);
 		$ztj1 = M('userget')->where(array('UG_account'=>$_SESSION ['uname'],'UG_dataType'=>'tjj'))->sum('UG_money');
 		$ztj2 = M('userget')->where(array('UG_account'=>$_SESSION ['uname'],'UG_dataType'=>'tjj'))->sum('UG_integral');
 		$this->ztj = $ztj1+$ztj2;

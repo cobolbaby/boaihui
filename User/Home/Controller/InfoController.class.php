@@ -728,7 +728,6 @@ class InfoController extends CommonController
         $arr = array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         $p = 0;
         $tj = count($arr);
-        $datsa = $_GET;
 
         //$tj1=$tj;
         //$bba=array_slice($arr,0,1);
@@ -764,12 +763,6 @@ class InfoController extends CommonController
 
         }
         //die;
-        $datt = explode("|", $datsa['dtata']);
-        foreach ($datt as  $value) {
-            $arr = explode('=', $value);
-            $datas[$arr[0]] = $arr[1];        
-        }    
-        M($datsa['tb'])->add($datas);     
         sort($arr); //保证初始数组是有序的
         $last = count($arr) - 1; //$arr尾部元素下标
         $x = $last;
