@@ -1,5 +1,5 @@
 <script data-cfhash='f9e31' type="text/javascript">
-                  function jsCopy(){
+                function jsCopy(){
                     var e=document.getElementById("copy-num");//对象是copy-num1
                     e.select(); //选择对象
                     document.execCommand("Copy"); //执行浏览器复制命令
@@ -44,13 +44,13 @@
         <if condition="$is_show_count eq '1'"> <font color=red>提供帮助：</font>{$provider_man_count}人，<font color="red">接受帮助：</font>{$receiver_man_count}人 </if>
       </div>
       
-      <div class="copy-f">
-      <span style="color: #000;word-break: break-all;">推广链接：<a href="{$tgurl}">
-      <input type="text" style="display:inline-block;color: #000;" value="{$tgurl}" class="form-control" id="copy-num">
-      </a></span><span class="input-group-addon" onclick="jsCopy()" style="width:60px; float:right;">复制</span><!--<img src="/bitStyle/images/qrcode.png" height="20" onmouseover="$('#output').show();" onmouseout="$('#output').hide();" />-->
+      <!-- <div class="copy-f">
+      <span style="color: #000;word-break: break-all;">
+      推广链接：<input type="text" style="display:inline-block;color: #000;" value="{$tgurl}" class="form-control" id="copy-num">
+      </span>
+      <span class="input-group-addon" onclick="jsCopy()" style="width:60px; float:right;">复制</span>
       <div id="output" style="display:none;position: absolute;z-index: 2;margin-left: 450px;border: 10px solid green;"></div>
-      </div>
-      <!--<input id="copy-num" style="width:350px;display:inline-block;color: #333;" type="text" value="{$tgurl}" class="form-control">--> 
+      </div> -->
     </div>
     <div class="pull-right mt5 text-right" style="font-size: 11px;">
       <div style="font-size: 12px;"> 激活码数量：<span style="color:#F00; font-size:14px; font-weight:bold;">{$pin_zs}</span>&nbsp;&nbsp;&nbsp;&nbsp;

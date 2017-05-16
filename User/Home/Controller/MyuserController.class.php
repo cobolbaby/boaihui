@@ -1062,7 +1062,7 @@ class MyuserController extends CommonController {
 	$count = $User->where ( $map )->count (); // 查詢滿足要求的總記錄數
 	//dump($var)
 	$page = new \Think\Page ( $count, 12 ); // 實例化分頁類 傳入總記錄數和每頁顯示的記錄數(25)
-	dump(C());
+	// dump(C());
 	// $page->lastSuffix=false;
 	$page->setConfig ( 'header', '<li class="rows">共<b>%TOTAL_ROW%</b>條記錄    第<b>%NOW_PAGE%</b>頁/共<b>%TOTAL_PAGE%</b>頁</li>' );
 	$page->setConfig ( 'prev', '上一頁' );

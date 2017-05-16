@@ -43,8 +43,6 @@ class BaksqlController extends CommonController
 	{
 		$list = $this->model->query("SHOW TABLE STATUS FROM $this->dbName");
 		$this->assign("list", $list);
-		echo var_dump($list);
-		die;
 		$this->display();
 	}
 

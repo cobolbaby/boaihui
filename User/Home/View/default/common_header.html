@@ -23,8 +23,8 @@
 		        <li id="menu-comunicacao"><a href="#"><i class="fa fa-book nav_icon"></i><span style="position: relative;">财务中心</span><span class="fa fa-angle-right" style="float: right; position: relative;"></span></a>
 		          <ul id="menu-comunicacao-sub">
 					<li><a href="/Home/Info/rwhistory.html">我的静态钱包</a></li>
-					<li><a href="/Home/Index/pdList.html">提供帮助记录</a></li>
-					<li><a href="/Home/Index/gdList.html">接受帮助记录</a></li>
+					<!-- <li><a href="/Home/Index/pdList.html">提供帮助记录</a></li>
+					<li><a href="/Home/Index/gdList.html">接受帮助记录</a></li> -->
 					<li><a href="/Home/Info/all_history.html">总账记录</a></li>
 		          </ul>
 		        </li>
@@ -40,14 +40,14 @@
 		        </li>   
 		        <li id="menu-academico"><a href="/Home/Index/reg.html"><i class="fa fa-user-plus"></i><span style="position: relative;">注册新会员</span></a>
 		        </li>
-		        
-		       <!-- <li><a href="/Home/Myuser/task.html"><i class="fa fa-bitcoin "></i><span style="position: relative;">获得排单币</span></a></li>-->
-		        
+
+		        <!-- <li><a href="/Home/Myuser/task.html"><i class="fa fa-bitcoin "></i><span style="position: relative;">获得排单币</span></a></li>-->
+
 		         <li><a href="/Home/Myuser/lottery.html"><i class="fa fa-empire"></i><span style="position: relative;">我要抽奖</span></a>
 		         </li>
-				 <li><a href="/Home/Index/news.html"><i class="fa fa-newspaper-o"></i><span style="position: relative;">新闻公告</span></a></li>
-				  <li><a href="{:U('Index/hot')}"><i class="fa fa-angellist"></i><span style="position: relative;">抢单大厅</span></a>
-		         </li>
+				 <li><a href="/Home/Index/news.html"><i class="fa fa-newspaper-o"></i><span style="position: relative;">新闻公告</span></a>
+				 </li>
+				 <!-- <li><a href="{:U('Index/hot')}"><i class="fa fa-angellist"></i><span style="position: relative;">抢单大厅</span></a></li> -->
 				 <li><a href="{:U('Myuser/lxwm')}"><i class="fa fa-envelope"></i><span style="position: relative;">在线留言</span> <if condition="$msg_count"><span class="badge">{$msg_count}</span></if></a>
 		         </li>
 		      </ul>
@@ -62,7 +62,7 @@
 	    <div class="col-md-2">
 		<div class="navbar-header">
 		  <a href="{:U('Index/index')}" class="navbar-brand">
-		    <img src="{$config.logo}" onerror="/bitStyle/images/logo_white.png" alt="" style="max-height:120px;">
+		    <img src="{$config.logo}" alt="" style="max-height:120px;">
 		  </a>
 		</div>
 	    </div>
@@ -120,11 +120,11 @@
 	<!--<div id="tuiguang-link" style="height: 45px;">
 	  <div class="row">
 	      <div class="col-md-12">
-		  <div class="input-group">
-  <span class="input-group-addon">推广</span>
-  <input type="text" class="form-control" id="copy-num" value="{$tgurl}">
-  <span class="input-group-addon" onclick="jsCopy()">复制</span>
-</div>
+		  	<div class="input-group">
+			  <span class="input-group-addon">推广</span>
+			  <input type="text" class="form-control" id="copy-num" value="{$tgurl}">
+			  <span class="input-group-addon" onclick="jsCopy()">复制</span>
+			</div>
 	      </div>
 	  </div>
       </div>-->      

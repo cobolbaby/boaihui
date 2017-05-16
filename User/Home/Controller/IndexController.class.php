@@ -2303,7 +2303,8 @@ public function jbzzcl() {
 		$this->display("Index/messageInbox");
 	}
 	 
-	public function pdList(){
+	/*public function pdList()
+	{
 		$User = M ( 'tgbz' ); // 实例化User对象
 		
 		$map['user']=$_SESSION['uname'];
@@ -2336,7 +2337,8 @@ public function jbzzcl() {
 		$this->display('Index/pdList');
 	}
 
-	public function  gdList(){
+	public function  gdList()
+	{
 		//////////////////----------
 		$User = M ( 'jsbz' ); // 实例化User对象
 		
@@ -2373,7 +2375,7 @@ public function jbzzcl() {
 		$this->de_list = true;
 
 		$this->display('Index/gdList');
-	}
+	}*/
 
 
 	// 金币转账处理
@@ -2597,7 +2599,8 @@ public function jbzzcl() {
 
 
 
-     public function  hot(){
+    /*public function  hot()
+    {
 		$hot_time = C('jjdktime');
 		$this->hot_lixi = C('hot_lixi');
 		$hot_add_way = C('hot_add_way');
@@ -2613,11 +2616,11 @@ public function jbzzcl() {
 			$where['qr_zt'] = 0;
 		}
 		$count = $db->where ( $where )->count (); // 查询满足要求的总记录数
-		$p = getpage($count,5);		
+		$p = getpage($count,5);
 		$this->ppdds = $db->where($where)->order ( 'id DESC' )->limit ( $p->firstRow, $p->listRows )->select ();
 		$this->assign ( 'page', $p->show() ); // 赋值分页输出
 		$this->display();
-	}
+	}*/
 
 
 	public function hot_detail($id){

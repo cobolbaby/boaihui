@@ -278,7 +278,6 @@ class IndexController extends CommonController
         $data['id'] = I('post.id');
         $data['status'] = I('post.status');
 
-        // dump(I('post.UE_account'));die;
         if (M('tixian')->where(array('id' => I('post.id')))->save($data)) {
             $this->success('修改成功!');
         } else {
@@ -840,8 +839,10 @@ class IndexController extends CommonController
 
         $this->display('index/tjwallet');
     }
-	
 
+    /**
+     * 基本状态/情况
+     */
     public function jbzs()
     {
 
