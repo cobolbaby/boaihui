@@ -1,5 +1,6 @@
 #过滤文件夹Runtime
 Uploads
+data
 User/Home/Conf/config.php
 User/Common/Conf/*_config.php
 Admin/Home/Conf/config.php
