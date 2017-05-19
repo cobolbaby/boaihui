@@ -1060,7 +1060,7 @@ canvas#radar {
 }
 /*--maloum grid start here--*/
 .malorum-top {
-    background: url(../images/1.jpg)no-repeat;
+    background: url(../images/bg.png)no-repeat;
     background-size: cover;
     min-height:190px;
 }
